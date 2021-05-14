@@ -39,8 +39,8 @@ public class Transition extends Father {
     public void createPlacesForTrans(Net net, ArrayList<String> placeCreated) {
 
         // questo ciclo continua a chiedere se vuole creare altri posti alla transizione scelta
-        while (Utility.continueWriting(Utility.CONTINUE_PLACE)) {
-            String next = Utility.readString(Utility.USER_NEXT_TRANSITION + this.getName());
+        while (Utility.continueWriting(Utility.CONTINUE_PLACE + this.getName() + "? " + Utility.CHOICE)) {
+            String next = Utility.readString(Utility.USER_NEXT_PLACE + this.getName());
             if (!Utility.nameUsedStringList(this.getConnections(), next)) {
                 this.getConnections().add(next);
                 placeCreated.add(next);

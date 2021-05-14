@@ -11,9 +11,11 @@ public class Utility {
     public static final String NAME_PLACE = "Inserire il nome del posto:\n";
     public static final String NAME_TRANSITION = "Inserire il nome della transizione:\n";
     public static final String USER_NEXT_TRANSITION = "Inserire il nome della transizione collegata a ";
+    public static final String USER_NEXT_PLACE = "Inserire il nome del posto collegato a ";
     public static final String ERROR_NAME = "ERRORE: nome già utilizzato. Operazione non eseguita.";
-    public static final String CONTINUE_TRANSITION = "Vuoi inserire una transizione?\nPremere un numero per continuare, 0 per fermarsi\n";
-    public static final String CONTINUE_PLACE = "Vuoi inserire un posto?\nPremere un numero per continuare, 0 per fermarsi\n";
+    public static final String CONTINUE_TRANSITION = "Vuoi inserire una transizione collegata a ";
+    public static final String CONTINUE_PLACE = "Vuoi inserire un posto collegato a ";
+    public static final String CHOICE = "Premere un numero per continuare, 0 per fermarsi\n";
     public static final String WELCOME = "Benvenuto nella creazione di una rete: digitare un numero per iniziare da un posto, 0 per iniziare da una transizione\n";
 
 

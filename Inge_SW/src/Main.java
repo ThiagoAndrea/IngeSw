@@ -23,7 +23,7 @@ public class Main {
             p1.createTransForPlace(net, transToDo);
         }
 
-        while (!placesToDo.isEmpty() && !transToDo.isEmpty()) {
+        while (!placesToDo.isEmpty() || !transToDo.isEmpty()) {
             if (!placesToDo.isEmpty()) {
                 for (String place : placesToDo) {
                     if (!Utility.nameUsedFatherList(net.getAllFather(), place)) {
@@ -31,8 +31,8 @@ public class Main {
                         p.setName(place);
                         p.createTransForPlace(net, transToDo);
                     }
-                    placesToDo.remove(place);
                 }
+                placesToDo.clear();
             } else {
                 for (String transition : transToDo) {
                     if (!Utility.nameUsedFatherList(net.getAllFather(), transition)) {
@@ -40,8 +40,8 @@ public class Main {
                         t.setName(transition);
                         t.createPlacesForTrans(net, placesToDo);
                     }
-                    transToDo.remove(transition);
                 }
+                transToDo.clear();
             }
         }
 
