@@ -17,23 +17,21 @@ public class Utility {
     public static final String WELCOME = "Benvenuto nella creazione di una rete: digitare un numero per iniziare da un posto, 0 per iniziare da una transizione\n";
 
 
-    private static Scanner createScanner(){
+    private static Scanner createScanner() {
         Scanner created = new Scanner(System.in);
         created.useDelimiter(System.getProperty("line.separator"));
         return created;
     }
 
-    public static String readString(String message)
-    {
-        boolean end=false;
+    public static String readString(String message) {
+        boolean end = false;
         String string = null;
-        do
-        {
+        do {
             System.out.println(message);
             string = scanner.nextLine();
             string = string.trim();
             if (string.length() > 0)
-                end=true;
+                end = true;
             else
                 System.out.println(ERROR_EMPTY);
         } while (!end);
@@ -41,37 +39,36 @@ public class Utility {
         return string;
     }
 
-    public static int readInt (String message)
-    {
+    public static int readInt(String message) {
         boolean end = false;
-        int value= 0;
-        do
-        {
-            System.out.print(message);
-            try
-            {
-                value = scanner.nextInt();
+        int value = 0;
+        Scanner read = new Scanner(System.in);
+
+        do {
+            System.out.println(message);
+            try {
+                value = read.nextInt();
                 end = true;
-            }
-            catch (InputMismatchException e)
-            {
+            } catch (InputMismatchException e) {
                 System.out.println(ERROR_FORMAT);
-                String trash = scanner.next();
+                String trash = read.next();
             }
-        } while (!end);
+        } while ((!end));
         return value;
+
     }
 
-    public static boolean continueWriting(String message){
+
+    public static boolean continueWriting(String message) {
         boolean stop;
         stop = readInt(message) != 0;
         return stop;
 
     }
 
-    public static boolean nameUsedStringList (ArrayList<String> list, String name){
+    public static boolean nameUsedStringList(ArrayList<String> list, String name) {
         boolean ok = false;
-        for (String s : list){
+        for (String s : list) {
             if (s.equals(name)) {
                 ok = true;
                 break;
@@ -80,9 +77,9 @@ public class Utility {
         return ok;
     }
 
-    public static boolean nameUsedFatherList (ArrayList<Father> list, String name){
+    public static boolean nameUsedFatherList(ArrayList<Father> list, String name) {
         boolean ok = false;
-        for (Father f : list){
+        for (Father f : list) {
             if (f.getName().equals(name)) {
                 ok = true;
                 break;
