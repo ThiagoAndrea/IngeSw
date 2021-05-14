@@ -11,25 +11,7 @@ public class Place extends Father{
         super();
     }
 
-    @Override
-    public String getName() {
-        return super.getName();
-    }
 
-    @Override
-    public ArrayList<String> getConnections() {
-        return super.getConnections();
-    }
-
-    @Override
-    public void setName(String name) {
-        super.setName(name);
-    }
-
-    @Override
-    public void setConnections(ArrayList<String> connection) {
-        super.setConnections(connection);
-    }
 
 
 

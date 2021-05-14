@@ -11,6 +11,26 @@ public class Transition extends Father {
 
     }
 
+    @Override
+    public void setName(String name) {
+        super.setName(name);
+    }
+
+    @Override
+    public void setConnections(ArrayList<String> connection) {
+        super.setConnections(connection);
+    }
+
+    @Override
+    public String getName() {
+        return super.getName();
+    }
+
+    @Override
+    public ArrayList<String> getConnections() {
+        return super.getConnections();
+    }
+
     /**
      *
      * @param net rete alla quale aggiungere la transizione che stiamo creando

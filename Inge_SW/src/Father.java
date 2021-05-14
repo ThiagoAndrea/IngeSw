@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public abstract class Father {
 
-    public String name;
-    public ArrayList<String> connections = new ArrayList<>();
+    private String name;
+    private ArrayList<String> connections = new ArrayList<>();
 
 
     public Father(String name, ArrayList<String> connections) {
