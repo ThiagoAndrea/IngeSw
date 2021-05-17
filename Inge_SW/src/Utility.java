@@ -16,7 +16,7 @@ public class Utility {
     public static final String ERROR_NUMBER = "ERRORE: numero inserito non coretto. Operazione non eseguita.\n";
     public static final String CONTINUE_TRANSITION = "Vuoi inserire una transizione collegata a ";
     public static final String CONTINUE_PLACE = "Vuoi inserire un posto collegato a ";
-    public static final String CHOICE = "Premere:\n0 -> no\n1 -> sì ";
+    public static final String CHOICE = "Premere:\n1 -> sì\n0 -> no";
     public static final String WELCOME = "Benvenuto nella creazione di una rete, premere:\n0 -> per iniziare da una transizione\n1 -> per iniziare da un posto\n";
 
 

@@ -43,7 +43,7 @@ public class Main {
                 transToDo.clear();
             }
         }
-
+    net.printNet();
 
     }
 }
