@@ -9,9 +9,8 @@ public class Main {
         ArrayList<String> transToDo = new ArrayList<>();
 
         //Creazione della net
-        Scanner scanner = new Scanner(System.in);
-        System.out.println(Utility.WELCOME);
-        int start = scanner.nextInt();
+
+        int start = Utility.readInt01(Utility.WELCOME);
 
         if (start == 0) {
             Transition t1 = new Transition();

@@ -32,8 +32,7 @@ public class Transition extends Father {
     }
 
     /**
-     *
-     * @param net rete alla quale aggiungere la transizione che stiamo creando
+     * @param net          rete alla quale aggiungere la transizione che stiamo creando
      * @param placeCreated lista di posti collegati alla transizione
      */
     public void createPlacesForTrans(Net net, ArrayList<String> placeCreated) {
@@ -44,8 +43,7 @@ public class Transition extends Father {
             if (!Utility.nameUsedStringList(this.getConnections(), next)) {
                 this.getConnections().add(next);
                 placeCreated.add(next);
-            }
-            else System.out.println(Utility.ERROR_NAME);
+            } else System.out.println(Utility.ERROR_NAME);
         }
 
         net.getAllFather().add(this);
