@@ -18,6 +18,7 @@ public class Utility {
     public static final String CONTINUE_PLACE = "Vuoi inserire un posto collegato a ";
     public static final String CHOICE = "Premere:\n1 -> sì\n0 -> no";
     public static final String WELCOME = "Benvenuto nella creazione di una rete, premere:\n0 -> per iniziare da una transizione\n1 -> per iniziare da un posto\n";
+    public static final String NET_NAME = "Inserisci un nome da assegnare alla tua rete:\n";
 
 
     private static Scanner createScanner() {

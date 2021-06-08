@@ -1,8 +1,13 @@
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Transition extends Father {
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Transition extends Father implements Serializable {
 
+    //nel caso aggiungere nome e codice come precedenti
     public Transition(String name, ArrayList<String> connection) {
         super(name, connection);
     }

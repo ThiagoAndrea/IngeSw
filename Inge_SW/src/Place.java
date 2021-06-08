@@ -1,8 +1,15 @@
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class Place extends Father {
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Place extends Father implements Serializable {
 
+
+    //da controllare se eredita o no
+    //da aggiungere nel caso anche il codice
     public Place(String name, ArrayList<String> connection) {
         super(name, connection);
     }
@@ -24,5 +31,6 @@ public class Place extends Father {
         }
         net.getAllFather().add(this);
     }
+
 
 }

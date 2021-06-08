@@ -1,8 +1,15 @@
+import javax.xml.bind.annotation.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Father {
+@XmlAccessorType(XmlAccessType.FIELD)
+public abstract class Father implements Serializable {
 
+    @XmlAttribute
     private String name;
+
+    @XmlElementWrapper
+    @XmlElement
     private ArrayList<String> connections = new ArrayList<>();
 
 
