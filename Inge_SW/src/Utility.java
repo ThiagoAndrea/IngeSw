@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -43,7 +44,7 @@ public class Utility {
         return string;
     }
 
-    public static int readInt01(String message){
+    public static int readInt01(String message) {
         boolean end = false;
         int value = 0;
         Scanner read = new Scanner(System.in);
@@ -83,7 +84,6 @@ public class Utility {
 
     }
 
-
     public static boolean continueWriting(String message) {
         boolean stop;
         stop = readInt01(message) != 0;
@@ -91,7 +91,7 @@ public class Utility {
 
     }
 
-    public static boolean nameUsedStringList(ArrayList<String> list, String name) {
+    public static boolean nameNotUsedStringList(ArrayList<String> list, String name) {
         boolean ok = false;
         for (String s : list) {
             if (s.equals(name)) {
@@ -99,10 +99,10 @@ public class Utility {
                 break;
             }
         }
-        return ok;
+        return !ok;
     }
 
-    public static boolean nameUsedFatherList(ArrayList<Father> list, String name) {
+    public static boolean nameNotUsedFatherList(ArrayList<Father> list, String name) {
         boolean ok = false;
         for (Father f : list) {
             if (f.getName().equals(name)) {
@@ -110,8 +110,44 @@ public class Utility {
                 break;
             }
         }
-        return ok;
+        return !ok;
     }
 
+    /**
+     * Controllo se la coppia "a" è contenuta nel set "coupleSet"
+     *
+     * @param coupleSet Insieme di partenza
+     * @param a Coppia da verificare se presente
+     * @return vero se la coppia è presente nel set, falso altrimenti
+     */
+    private static boolean containCouple(HashSet<Couple> coupleSet, Couple a) {
+        boolean found = false;
+        for(Couple c : coupleSet){
+            if (sameCouple(c, a)){
+                found = true;
+                break;
+            }
+        }
+        return found;
+    }
 
+    /**
+     * Confronto se due coppie sono uguali sia nel nome che nella classe
+     * @param a prima coppia
+     * @param b seconda coppia
+     * @return vero se le due coppie sono uguali, falso altrimenti
+     */
+    private static boolean sameCouple(Couple a, Couple b) {
+        return a.getFirst().getName().equals(b.getFirst().getName()) &&
+                a.getSecond().getName().equals(b.getSecond().getName()) && a.getFirst().getClass().equals(b.getFirst().getClass()) &&
+                a.getSecond().getClass().equals(b.getSecond().getClass());
+    }
+
+    public static boolean sameFlux(HashSet<Couple> flux1, HashSet<Couple> flux2) {
+        for (Couple c1 : flux1) {
+            if(!containCouple(flux2, c1))
+                return false;
+        }
+        return true;
+    }
 }

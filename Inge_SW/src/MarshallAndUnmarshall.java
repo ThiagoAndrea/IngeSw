@@ -7,7 +7,7 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
-import java.io.File;
+/*import java.io.File;
 
 public class MarshallAndUnmarshall {
 
@@ -51,3 +51,4 @@ public class MarshallAndUnmarshall {
         System.out.println(proofOfWork.toString());
     }
 }
+*/

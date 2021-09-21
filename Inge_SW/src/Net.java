@@ -1,19 +1,24 @@
-import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 
-@XmlRootElement(name = "Rete")
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Net implements Serializable {
 
-    @XmlAttribute
+
     private String name;
     //da aggiungere codice??
 
-    @XmlElementWrapper(name = "Lista")
-    @XmlElement(name = "Postotransizione")
     private ArrayList<Father> allFather = new ArrayList<>();
+    private HashSet<Couple> flux = new HashSet<>();
+
+    public HashSet<Couple> getFlux() {
+        return flux;
+    }
+
+    public void setFlux(HashSet<Couple> flux) {
+        this.flux = flux;
+    }
 
     public String getName() {
         return name;
@@ -29,8 +34,8 @@ public class Net implements Serializable {
 
     public Net() {
 
-        ArrayList<String> placesToDo = new ArrayList<>();
-        ArrayList<String> transToDo = new ArrayList<>();
+        ArrayList<Place> placesToDo = new ArrayList<>();
+        ArrayList<Transition> transToDo = new ArrayList<>();
 
         this.setName(Utility.readString(Utility.NET_NAME));
         int start = Utility.readInt01(Utility.WELCOME);
@@ -46,20 +51,16 @@ public class Net implements Serializable {
 
         while (!placesToDo.isEmpty() || !transToDo.isEmpty()) {
             if (!placesToDo.isEmpty()) {
-                for (String place : placesToDo) {
-                    if (!Utility.nameUsedFatherList(this.getAllFather(), place)) {
-                        Place p = new Place();
-                        p.setName(place);
-                        p.createTransForPlace(this, transToDo);
+                for (Place place : placesToDo) {
+                    if (Utility.nameNotUsedFatherList(this.getAllFather(), place.getName())) {
+                        place.createTransForPlace(this, transToDo);
                     }
                 }
                 placesToDo.clear();
             } else {
-                for (String transition : transToDo) {
-                    if (!Utility.nameUsedFatherList(this.getAllFather(), transition)) {
-                        Transition t = new Transition();
-                        t.setName(transition);
-                        t.createPlacesForTrans(this, placesToDo);
+                for (Transition transition : transToDo) {
+                    if (Utility.nameNotUsedFatherList(this.getAllFather(), transition.getName())) {
+                        transition.createPlacesForTrans(this, placesToDo);
                     }
                 }
                 transToDo.clear();
@@ -69,14 +70,10 @@ public class Net implements Serializable {
     }
 
 
-    public void printNet() {
-        System.out.println("La rete creata è la seguente: ");
-        for (Father f : this.allFather) {
-            System.out.print(f.getName() + " --> ");
-            for (String conn : f.getConnections()) {
-                System.out.print(conn + " ");
-            }
-            System.out.print("\n");
+    public void printFlux() {
+        System.out.println("Il flusso della rete creata è il seguente: ");
+        for (Couple c : this.getFlux()) {
+            System.out.println(c.toString());
         }
 
     }
