@@ -34,11 +34,11 @@ public class Net implements Serializable {
 
     public Net() {
 
-        ArrayList<Place> placesToDo = new ArrayList<>();
+        ArrayList<Place> placesToDo = new ArrayList<>();   //Array di supporto per la creazione della rete; mi ricordano quali elementi ho già creato e quali no
         ArrayList<Transition> transToDo = new ArrayList<>();
 
         this.setName(Utility.readString(Utility.NET_NAME));
-        int start = Utility.readInt01(Utility.WELCOME);
+        int start = Utility.readInt01(Utility.WELCOME); //Il configuratore sceglie se iniziare da un posto o da una transizione
         if (start == 0) {
             Transition t1 = new Transition();
             t1.setName(Utility.readString(Utility.NAME_TRANSITION));
@@ -48,7 +48,7 @@ public class Net implements Serializable {
             p1.setName(Utility.readString(Utility.NAME_PLACE));
             p1.createTransForPlace(this, transToDo);
         }
-
+        //Ciclo che si conclude quando il configuratore ha collegato tutti i possibili elementi di rete
         while (!placesToDo.isEmpty() || !transToDo.isEmpty()) {
             if (!placesToDo.isEmpty()) {
                 for (Place place : placesToDo) {
