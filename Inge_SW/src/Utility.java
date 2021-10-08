@@ -20,6 +20,7 @@ public class Utility {
     public static final String CHOICE = "Premere:\n1 -> sì\n0 -> no";
     public static final String WELCOME = "Benvenuto nella creazione di una rete, premere:\n0 -> per iniziare da una transizione\n1 -> per iniziare da un posto\n";
     public static final String NET_NAME = "Inserisci un nome da assegnare alla tua rete:\n";
+    public static final String START = "-\n--\n--- BENVENUTO ---\n--\n-\n\nPremere:\n0 -> per visualizzare le reti salvare\n1 -> per creare una nuova rete";
 
 
     private static Scanner createScanner() {

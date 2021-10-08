@@ -7,14 +7,16 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws JAXBException, SAXException {
 
-        Net net1 = new Net();
-        net1.printFlux();
-        Net net2 = new Net();
-        net2.printFlux();
+        int start = Utility.readInt01(Utility.START);
+        switch (start) {
+            case 0:
+                // Visualizzazione delle reti salvate
+                break;
 
-        if(Utility.sameFlux(net1.getFlux(), net2.getFlux()))
-            System.out.println("Hanno stesso flusso");
-        else System.out.println("Non hanno stesso flusso");
+            case 1:
+                Net net = new Net();
+                break;
+        }
 
     }
 }
