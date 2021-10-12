@@ -66,11 +66,11 @@ public class Net implements Serializable {
                 transToDo.clear();
             }
         }
-
     }
 
 
     public void printFlux() {
+
         System.out.println("Il flusso della rete creata è il seguente: ");
         for (Couple c : this.getFlux()) {
             System.out.println(c.toString());

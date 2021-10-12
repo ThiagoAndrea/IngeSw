@@ -1,16 +1,8 @@
-import javax.xml.bind.annotation.*;
 import java.io.Serializable;
-import java.util.ArrayList;
 
-@XmlAccessorType(XmlAccessType.FIELD)
 public abstract class Father implements Serializable {
 
-    @XmlAttribute
     private String name;
-
-    public Father(String name, ArrayList<String> connections) {
-        this.name = name;
-    }
 
     public Father() {
 
@@ -23,6 +15,5 @@ public abstract class Father implements Serializable {
     public String getName() {
         return name;
     }
-
 
 }

@@ -1,0 +1,25 @@
+1) Da aggiungere la classe che gestisce solo la lettura da Xml.
+
+        XMLInputFactory xmlif = null;
+        XMLStreamReader xmlr = null;
+
+         public void initReader(String nome_file) {
+
+                try {
+                    xmlif = XMLInputFactory.newInstance();
+                    xmlr = xmlif.createXMLStreamReader(new FileInputStream(nome_file));
+                } catch (Exception e) {
+                    System.out.println("Errore nell'inizializzazione del reader:");
+                }
+            }
+
+         Metodo read.... cosa serve
+
+2) Attenzione alla classe father che deve essere completamente abstract e le classi in cui utilizzo annotazione da fare come classi POJO.
+3) Inserire l'annotazione Xml:
+    - Classi Net, Place, Transition;
+    - Da vedere se aggiungere la classe flux (Parlare con Andrea);
+    - Possibile aggiunta di Logger.
+4) Aggiunta di Schema Xml.
+
+5) Aggiungere già nelle classi Place e Transition solo gli attributi opzionali.

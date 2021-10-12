@@ -4,11 +4,6 @@ import java.util.ArrayList;
 
 public class Transition extends Father implements Serializable {
 
-    //nel caso aggiungere nome e codice come precedenti
-    public Transition(String name, ArrayList<String> connection) {
-        super(name, connection);
-    }
-
     public Transition() {
 
     }
@@ -32,15 +27,16 @@ public class Transition extends Father implements Serializable {
 
         ArrayList<String> connections = new ArrayList<>();
 
-
         // questo ciclo continua a chiedere se vuole creare altri posti alla transizione scelta
         while (Utility.continueWriting(Utility.CONTINUE_PLACE + this.getName() + "? " + Utility.CHOICE)) {
+
             String next = Utility.readString(Utility.USER_NEXT_PLACE + this.getName());
             Place p = new Place();
             p.setName(next);
             Couple c = new Couple(); //Creo la coppia posto-transizione da inserire nel flusso della rete
             c.setFirst(this);
             c.setSecond(p);
+
             if (Utility.nameNotUsedStringList(connections, next)) {
                 net.getFlux().add(c);
                 connections.add(next);

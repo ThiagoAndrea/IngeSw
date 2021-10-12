@@ -1,54 +1,68 @@
 import org.xml.sax.SAXException;
 
-import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
-/*import java.io.File;
+import java.io.File;
 
 public class MarshallAndUnmarshall {
 
     public MarshallAndUnmarshall() {
     }
 
-    String xmlNet = "Savings.xml";
-    String xsdNet = "savings.xsd";
+    private final String xmlNet = "Savings.xml";
+    private final String xsdNet = "savings.xsd";
 
-    //per prova passo solo una rete, poi vediamo per più reti
     //MARSHALL = SCRITTURA
+
+    /**
+     *
+     * @param rete
+     * @throws SAXException
+     * @throws JAXBException
+     */
     public void marshall(Net rete) throws SAXException, JAXBException {
 
+        //ci sarà già uno schema prefabbricato
         //SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         //Schema schema = schemaFactory.newSchema(new File(xsdNet));
 
-        File xmlScritto = new File(xmlNet);
+        //File xmlScritto = new File(xmlNet);
 
-        JAXBContext jaxbContext = JAXBContext.newInstance(Net.class, Place.class,Transition.class);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Net.class, Father.class,Place.class, Transition.class);
         Marshaller marshaller = jaxbContext.createMarshaller();
+
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+        //marshaller.setProperty(Marshaller.JAXB_NO_NAMESPACE_SCHEMA_LOCATION, Boolean.FALSE);
+
         //marshaller.setSchema(schema);
-        //Event handler
+
+        marshaller.setEventHandler(new NetValidationEventHandler());
 
         marshaller.marshal(rete, new File(xmlNet));
+        marshaller.marshal(rete, System.out);
     }
 
+    /**
+     *
+     * @throws JAXBException
+     */
     public void unmarshall() throws JAXBException {
 
         //SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         //Schema schema = schemaFactory.newSchema(new File());
 
-        JAXBContext jaxbContext = JAXBContext.newInstance(Net.class, Place.class,Transition.class);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Net.class, Place.class, Transition.class);
 
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-        //unmarshaller.getSchema();
-        //unmarshaller.setEventHandler();
+        //unmarshaller.getSchema(); // Restituisce lo schema che è stato utilizzato per fare l'unmarshalling
+        unmarshaller.setEventHandler(new NetValidationEventHandler());
 
-        Net proofOfWork = (Net) unmarshaller.unmarshal(new File("Savings.xml"));
+        Net proofOfWork = (Net) unmarshaller.unmarshal(new File(xmlNet));
 
         System.out.println(proofOfWork.toString());
     }
 }
-*/
