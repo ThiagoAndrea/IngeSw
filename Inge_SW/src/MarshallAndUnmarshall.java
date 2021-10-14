@@ -14,12 +14,13 @@ public class MarshallAndUnmarshall {
     }
 
     private final String xmlNet = "Savings.xml";
+    private final String xmlProva = "TEST1_CONVERSIONE.xml";
+
     private final String xsdNet = "savings.xsd";
 
     //MARSHALL = SCRITTURA
 
     /**
-     *
      * @param rete
      * @throws SAXException
      * @throws JAXBException
@@ -32,7 +33,7 @@ public class MarshallAndUnmarshall {
 
         //File xmlScritto = new File(xmlNet);
 
-        JAXBContext jaxbContext = JAXBContext.newInstance(Net.class, Father.class,Place.class, Transition.class);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Net.class, Father.class, Place.class, Transition.class);
         Marshaller marshaller = jaxbContext.createMarshaller();
 
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
@@ -40,14 +41,13 @@ public class MarshallAndUnmarshall {
 
         //marshaller.setSchema(schema);
 
-        marshaller.setEventHandler(new NetValidationEventHandler());
+        //marshaller.setEventHandler(new NetValidationEventHandler());
 
         marshaller.marshal(rete, new File(xmlNet));
         marshaller.marshal(rete, System.out);
     }
 
     /**
-     *
      * @throws JAXBException
      */
     public void unmarshall() throws JAXBException {
@@ -55,13 +55,13 @@ public class MarshallAndUnmarshall {
         //SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         //Schema schema = schemaFactory.newSchema(new File());
 
-        JAXBContext jaxbContext = JAXBContext.newInstance(Net.class, Place.class, Transition.class);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Net.class, Father.class, Place.class, Transition.class);
 
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         //unmarshaller.getSchema(); // Restituisce lo schema che è stato utilizzato per fare l'unmarshalling
         unmarshaller.setEventHandler(new NetValidationEventHandler());
 
-        Net proofOfWork = (Net) unmarshaller.unmarshal(new File(xmlNet));
+        Net proofOfWork = (Net) unmarshaller.unmarshal(new File(xmlProva));
 
         System.out.println(proofOfWork.toString());
     }

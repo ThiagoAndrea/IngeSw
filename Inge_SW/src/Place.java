@@ -1,25 +1,38 @@
+import javax.xml.bind.annotation.XmlAttribute;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 
 public class Place extends Father implements Serializable {
 
+    private String name;
+
+    private int weight;
+
     public Place() {
-        super();
+    }
+
+    @XmlAttribute(name = "Name", required = true)
+    @Override
+    public String getName() {
+        return name;
     }
 
     @Override
     public void setName(String name) {
-        super.setName(name);
+        this.name = name;
     }
 
-    @Override
-    public String getName() {
-        return super.getName();
+    @XmlAttribute(name = "Weight", required = false)
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
     }
 
     /**
-     *
      * @param net
      * @param transCreated
      */

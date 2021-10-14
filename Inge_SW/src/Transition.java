@@ -1,23 +1,38 @@
+import javax.xml.bind.annotation.XmlAttribute;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 
 public class Transition extends Father implements Serializable {
 
-    public Transition() {
 
+    private String name;
+
+
+    private String time;
+
+    public Transition() {
+    }
+
+    @XmlAttribute(name = "Name", required = true)
+    @Override
+    public String getName() {
+        return name;
     }
 
     @Override
     public void setName(String name) {
-        super.setName(name);
+        this.name = name;
     }
 
-    @Override
-    public String getName() {
-        return super.getName();
+    @XmlAttribute(name = "Time", required = false)
+    public String getTime() {
+        return time;
     }
 
+    public void setTime(String time) {
+        this.time = time;
+    }
 
     /**
      * @param net          rete alla quale aggiungere la transizione che stiamo creando

@@ -1,16 +1,20 @@
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-
+@XmlRootElement(name = "Net")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Net implements Serializable {
 
-
+    @XmlTransient
     private String name;
-    //da aggiungere codice??
+
 
     private ArrayList<Father> allFather = new ArrayList<>();
+
     private HashSet<Couple> flux = new HashSet<>();
+
 
     public HashSet<Couple> getFlux() {
         return flux;
@@ -20,6 +24,7 @@ public class Net implements Serializable {
         this.flux = flux;
     }
 
+    @XmlAttribute(name = "Name")
     public String getName() {
         return name;
     }
@@ -28,9 +33,16 @@ public class Net implements Serializable {
         this.name = name;
     }
 
+    @XmlElementWrapper(name = "Padri", required = true)
+    @XmlAnyElement
     public ArrayList<Father> getAllFather() {
         return allFather;
     }
+
+    public void net() {
+    }
+
+    //ATTENZIONE HO COMMENTATO PER POTER USARE IL COSTRUTTORE NET COMPLETAMENTE VUOTO
 
     public Net() {
 
