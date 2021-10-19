@@ -1,12 +1,14 @@
-import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Place extends Father implements Serializable {
 
+    @XmlTransient
     private String name;
 
+    @XmlTransient
     private int weight;
 
     public Place() {

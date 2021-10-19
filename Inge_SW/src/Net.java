@@ -4,18 +4,16 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 @XmlRootElement(name = "Net")
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Net implements Serializable {
 
-    @XmlTransient
     private String name;
-
 
     private ArrayList<Father> allFather = new ArrayList<>();
 
     private HashSet<Couple> flux = new HashSet<>();
 
 
+    @XmlElementWrapper(name = "Flusso", required = true)
     public HashSet<Couple> getFlux() {
         return flux;
     }
@@ -34,12 +32,12 @@ public class Net implements Serializable {
     }
 
     @XmlElementWrapper(name = "Padri", required = true)
-    @XmlAnyElement
+    @XmlElement(name = "Padre", required = true)
     public ArrayList<Father> getAllFather() {
         return allFather;
     }
 
-    public void net() {
+    public void Net() {
     }
 
     //ATTENZIONE HO COMMENTATO PER POTER USARE IL COSTRUTTORE NET COMPLETAMENTE VUOTO

@@ -17,7 +17,7 @@ public class Main {
                 break;
 
             case 1:
-                Net net = new Net();
+                net = new Net();
                 break;
         }
 

@@ -33,7 +33,9 @@ public class MarshallAndUnmarshall {
 
         //File xmlScritto = new File(xmlNet);
 
-        JAXBContext jaxbContext = JAXBContext.newInstance(Net.class, Father.class, Place.class, Transition.class);
+        System.out.println("-------------------------------------------------------------");
+
+        JAXBContext jaxbContext = JAXBContext.newInstance(Net.class, /*Father.class,*/ Place.class, Transition.class);
         Marshaller marshaller = jaxbContext.createMarshaller();
 
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
@@ -45,6 +47,8 @@ public class MarshallAndUnmarshall {
 
         marshaller.marshal(rete, new File(xmlNet));
         marshaller.marshal(rete, System.out);
+
+        System.out.println("-------------------------------------------------------------");
     }
 
     /**
