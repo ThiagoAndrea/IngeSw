@@ -17,7 +17,8 @@ public class Main {
                 break;
 
             case 1:
-                net = new Net();
+                String netName = Utility.readString(Utility.NET_NAME);
+                net = new Net(netName);
                 break;
         }
 

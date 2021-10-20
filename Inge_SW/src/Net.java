@@ -42,12 +42,12 @@ public class Net implements Serializable {
 
     //ATTENZIONE HO COMMENTATO PER POTER USARE IL COSTRUTTORE NET COMPLETAMENTE VUOTO
 
-    public Net() {
+    public Net(String netName) {
 
         ArrayList<Place> placesToDo = new ArrayList<>();   //Array di supporto per la creazione della rete; mi ricordano quali elementi ho già creato e quali no
         ArrayList<Transition> transToDo = new ArrayList<>();
 
-        this.setName(Utility.readString(Utility.NET_NAME));
+        this.setName(netName);
         int start = Utility.readInt01(Utility.WELCOME); //Il configuratore sceglie se iniziare da un posto o da una transizione
         if (start == 0) {
             Transition t1 = new Transition();
