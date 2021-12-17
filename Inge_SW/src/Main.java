@@ -21,7 +21,7 @@ public class Main {
                 net = new Net(netName);
                 break;
         }
-
+        net.printFlux();
         //util.unmarshall();
         util.marshall(net);
     }

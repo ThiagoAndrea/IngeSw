@@ -66,6 +66,7 @@ public class Net implements Serializable {
                         place.createTransForPlace(this, transToDo);
                     }
                 }
+
                 placesToDo.clear();
             } else {
                 for (Transition transition : transToDo) {

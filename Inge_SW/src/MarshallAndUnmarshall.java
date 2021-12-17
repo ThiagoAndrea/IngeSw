@@ -63,7 +63,7 @@ public class MarshallAndUnmarshall {
 
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         //unmarshaller.getSchema(); // Restituisce lo schema che è stato utilizzato per fare l'unmarshalling
-        unmarshaller.setEventHandler(new NetValidationEventHandler());
+        //unmarshaller.setEventHandler(new NetValidationEventHandler());
 
         Net proofOfWork = (Net) unmarshaller.unmarshal(new File(xmlProva));
 
