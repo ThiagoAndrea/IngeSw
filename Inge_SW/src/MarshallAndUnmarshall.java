@@ -35,7 +35,7 @@ public class MarshallAndUnmarshall {
 
         System.out.println("-------------------------------------------------------------");
 
-        JAXBContext jaxbContext = JAXBContext.newInstance(Net.class, /*Father.class,*/ Place.class, Transition.class);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Net.class, Place.class, Transition.class);
         Marshaller marshaller = jaxbContext.createMarshaller();
 
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);

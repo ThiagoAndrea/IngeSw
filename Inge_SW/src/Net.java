@@ -37,7 +37,7 @@ public class Net implements Serializable {
         return allFather;
     }
 
-    public void Net() {
+    public Net() {
     }
 
     //ATTENZIONE HO COMMENTATO PER POTER USARE IL COSTRUTTORE NET COMPLETAMENTE VUOTO
