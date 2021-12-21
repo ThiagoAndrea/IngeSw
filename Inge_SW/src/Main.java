@@ -19,10 +19,13 @@ public class Main {
             case 1:
                 String netName = Utility.readString(Utility.NET_NAME);
                 net = new Net(netName);
+                if(Utility.readInt01(Utility.SAVING) == 1)
+                util.marshall(net);
+                else
+                    System.out.println(Utility.NOTSAVED);
                 break;
         }
-        net.printFlux();
         //util.unmarshall();
-        util.marshall(net);
+
     }
 }

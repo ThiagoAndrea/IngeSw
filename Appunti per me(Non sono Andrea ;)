@@ -23,3 +23,55 @@
 4) Aggiunta di Schema Xml.
 
 5) Aggiungere già nelle classi Place e Transition solo gli attributi opzionali.
+
+
+
+Classe che contiene tutte le reti
+
+Global
+
+    ArrayList <Net> allNets = new ArrayList<>();
+
+    sameFlux
+
+  retecreata ------ ArrayList di reti già salvate;
+  forEach (Rete in retiSalvate){
+    SE reteCreata è uguale a Rete
+     Allora impossibile salvare
+     break;
+  }
+  salva la reteCreata;
+
+  COSA FARE:
+
+  1. Chiedere all'utente di salvare la rete nel file.
+  2. Sovrascrivere la rete all'interno del file se verificata la condizione di salvataggio.
+  3. Visualizzare il file con tutte le reti.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
