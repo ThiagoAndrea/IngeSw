@@ -19,6 +19,7 @@ public class Utility {
     public static final String ERROR_NUMBER = "ERRORE: numero inserito non coretto. Operazione non eseguita.\n";
     public static final String CONTINUE_TRANSITION = "Vuoi inserire delle transizioni collegati a ";
     public static final String CONTINUE_PLACE = "Vuoi inserire dei posti collegati a ";
+    public static final String CONFIRM = " sono i nomi inseriti. Confermi la scelta?\n";
     public static final String CHOICE = "Premere:\n1 -> sì\n0 -> no";
     public static final String SAVING = "Premere 1 se vuoi salvare la rete appena creata in modo permanente, altrimenti premere 0.";
     public static final String NOTSAVED = "La rete creata non è stata salvata come da te richiesto.";
@@ -26,7 +27,7 @@ public class Utility {
     public static final String NET_NAME = "Inserisci un nome da assegnare alla tua rete:\n";
     public static final String CONTINUE_TRANS = "Inserire i nomi delle transizioni collegate a ";
     public static final String BACK = "\nInserire 0 per terminare.";
-    public static final String START = "-\n--\n--- BENVENUTO ---\n--\n-\n\nPremere:\n0 -> per visualizzare le reti salvare\n1 -> per creare una nuova rete";
+    public static final String START = "-\n--\n--- BENVENUTO ---\n--\n-\n\nPremere:\n0 -> per visualizzare le reti salvate\n1 -> per creare una nuova rete";
 
 
     private static Scanner createScanner() {
@@ -132,6 +133,5 @@ public class Utility {
         }
         return !ok;
     }
-
 
 }

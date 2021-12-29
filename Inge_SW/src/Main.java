@@ -20,10 +20,10 @@ public class Main {
             case 1:
                 String netName = Utility.readString(Utility.NET_NAME);
                 net = new Net(netName);
-                if(Utility.readInt01(Utility.SAVING) == 1){
+                if (Utility.readInt01(Utility.SAVING) == 1) {
                     global.getNetSaved().add(net);
-                util.marshall(global);}
-                else
+                    util.marshall(global);
+                } else
                     System.out.println(Utility.NOTSAVED);
                 break;
         }

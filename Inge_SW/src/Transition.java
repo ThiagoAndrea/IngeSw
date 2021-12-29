@@ -46,8 +46,18 @@ public class Transition extends Father implements Serializable {
         ArrayList<String> connections = new ArrayList<>();
 
         // questo ciclo continua a chiedere se vuole creare altri posti alla transizione scelta
-        while (Utility.continueWriting(Utility.CONTINUE_PLACE + this.getName() + "? " + Utility.CHOICE)) {
-            ArrayList<String> connections2 = Utility.readNames(Utility.USER_NEXT_PLACE + this.getName());
+        if (Utility.continueWriting(Utility.CONTINUE_PLACE + this.getName() + "? " + Utility.CHOICE)) {
+            ArrayList<String> connections2 = new ArrayList<>();
+            do {
+                connections2 = Utility.readNames(Utility.USER_NEXT_PLACE + this.getName());
+                for (String s : connections2) {
+                    System.out.print("[");
+                    System.out.print(s);
+                    System.out.print("]");
+                }
+                System.out.print(Utility.CONFIRM);
+            } while (Utility.readInt01(Utility.CHOICE) != 1);
+
             for (String s : connections2) {
                 // Se il nome è già utilizzato, cambio il nome subito
                 while (!Utility.nameNotUsedStringList(connections, s)) {

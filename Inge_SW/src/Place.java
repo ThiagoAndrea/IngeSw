@@ -44,9 +44,17 @@ public class Place extends Father implements Serializable {
          inserita dal configuratore non sia già stata utilizzata */
         ArrayList<String> connections = new ArrayList<>();
         // questo ciclo continua a chiedere se vuole creare altre transizioni al posto scelto
-        while (Utility.continueWriting(Utility.CONTINUE_TRANSITION + this.getName() + "? " + Utility.CHOICE)) {
-
-            ArrayList<String> connections2 = Utility.readNames(Utility.USER_NEXT_TRANSITION + this.getName());
+        if (Utility.continueWriting(Utility.CONTINUE_TRANSITION + this.getName() + "? " + Utility.CHOICE)) {
+            ArrayList<String> connections2 = new ArrayList<>();
+            do {
+                connections2 = Utility.readNames(Utility.USER_NEXT_TRANSITION + this.getName());
+                for (String s : connections2) {
+                    System.out.print("[");
+                    System.out.print(s);
+                    System.out.print("]");
+                }
+                System.out.print(Utility.CONFIRM);
+            } while (Utility.readInt01(Utility.CHOICE) != 1);
             for (String s : connections2) {
                 // Se il nome è già utilizzato, cambio il nome subito
                 while (!Utility.nameNotUsedStringList(connections, s)) {
