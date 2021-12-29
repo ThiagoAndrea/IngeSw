@@ -9,6 +9,7 @@ public class Main {
         MarshallAndUnmarshall util = new MarshallAndUnmarshall();
 
         Net net = null;
+        Global global = new Global();
 
         int start = Utility.readInt01(Utility.START);
         switch (start) {
@@ -19,8 +20,9 @@ public class Main {
             case 1:
                 String netName = Utility.readString(Utility.NET_NAME);
                 net = new Net(netName);
-                if(Utility.readInt01(Utility.SAVING) == 1)
-                util.marshall(net);
+                if(Utility.readInt01(Utility.SAVING) == 1){
+                    global.getNetSaved().add(net);
+                util.marshall(global);}
                 else
                     System.out.println(Utility.NOTSAVED);
                 break;

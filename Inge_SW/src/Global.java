@@ -1,10 +1,19 @@
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+@XmlRootElement
 public class Global {
 
+
+    @XmlTransient
     private ArrayList<Net> netSaved = new ArrayList<>();
 
+    @XmlElementWrapper(name = "Reti")
+    @XmlElement(name = "Rete")
     public ArrayList<Net> getNetSaved() {
         return netSaved;
     }

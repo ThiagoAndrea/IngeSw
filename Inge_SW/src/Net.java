@@ -3,13 +3,16 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-@XmlRootElement(name = "Net")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Net implements Serializable {
 
+    @XmlTransient
     private String name;
 
+    @XmlTransient
     private ArrayList<Father> allFather = new ArrayList<>();
 
+    @XmlTransient
     private HashSet<Couple> flux = new HashSet<>();
 
 

@@ -21,11 +21,11 @@ public class MarshallAndUnmarshall {
     //MARSHALL = SCRITTURA
 
     /**
-     * @param rete
+     * @param
      * @throws SAXException
      * @throws JAXBException
      */
-    public void marshall(Net rete) throws SAXException, JAXBException {
+    public void marshall(Global global) throws SAXException, JAXBException {
 
         //ci sarà già uno schema prefabbricato
         //SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
@@ -35,7 +35,7 @@ public class MarshallAndUnmarshall {
 
         System.out.println("-------------------------------------------------------------");
 
-        JAXBContext jaxbContext = JAXBContext.newInstance(Net.class, Place.class, Transition.class);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Global.class, Net.class, Place.class, Transition.class);
         Marshaller marshaller = jaxbContext.createMarshaller();
 
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
@@ -45,8 +45,8 @@ public class MarshallAndUnmarshall {
 
         //marshaller.setEventHandler(new NetValidationEventHandler());
 
-        marshaller.marshal(rete, new File(xmlNet));
-        marshaller.marshal(rete, System.out);
+        marshaller.marshal(global, new File(xmlNet));
+        marshaller.marshal(global, System.out);
 
         System.out.println("-------------------------------------------------------------");
     }
@@ -59,13 +59,13 @@ public class MarshallAndUnmarshall {
         //SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         //Schema schema = schemaFactory.newSchema(new File());
 
-        JAXBContext jaxbContext = JAXBContext.newInstance(Net.class, Father.class, Place.class, Transition.class);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Global.class, Net.class, Father.class, Place.class, Transition.class);
 
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         //unmarshaller.getSchema(); // Restituisce lo schema che è stato utilizzato per fare l'unmarshalling
         //unmarshaller.setEventHandler(new NetValidationEventHandler());
 
-        Net proofOfWork = (Net) unmarshaller.unmarshal(new File(xmlProva));
+        Global proofOfWork = (Global) unmarshaller.unmarshal(new File(xmlProva));
 
         System.out.println(proofOfWork.toString());
     }
