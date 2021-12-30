@@ -14,7 +14,7 @@ public class Main {
         int start = Utility.readInt01(Utility.START);
         switch (start) {
             case 0:
-                // Visualizzazione delle reti salvate
+                util.unmarshall();
                 break;
 
             case 1:

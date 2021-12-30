@@ -27,11 +27,7 @@ public class MarshallAndUnmarshall {
      */
     public void marshall(Global global) throws SAXException, JAXBException {
 
-        //ci sarà già uno schema prefabbricato
-        //SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-        //Schema schema = schemaFactory.newSchema(new File(xsdNet));
-
-        //File xmlScritto = new File(xmlNet);
+        unmarshall();
 
         System.out.println("-------------------------------------------------------------");
 
@@ -66,7 +62,7 @@ public class MarshallAndUnmarshall {
         //unmarshaller.setEventHandler(new NetValidationEventHandler());
 
         Global proofOfWork = (Global) unmarshaller.unmarshal(new File(xmlProva));
-
-        System.out.println(proofOfWork.toString());
+        System.out.println("\t---\nUnmarshall eseguito\n\t---");
+        //System.out.println(proofOfWork.toString());
     }
 }

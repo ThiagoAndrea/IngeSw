@@ -1,13 +1,10 @@
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Global {
-
 
     @XmlTransient
     private ArrayList<Net> netSaved = new ArrayList<>();
@@ -58,5 +55,13 @@ public class Global {
                 return false;
         }
         return true;
+    }
+
+    //tostring ad hoc per visualizzare tutte le reti
+    @Override
+    public String toString() {
+        return "Global{" +
+                "netSaved=" + netSaved +
+                '}';
     }
 }
