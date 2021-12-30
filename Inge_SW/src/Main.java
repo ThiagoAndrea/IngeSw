@@ -9,20 +9,23 @@ public class Main {
         MarshallAndUnmarshall util = new MarshallAndUnmarshall();
 
         Net net = null;
-        Global global = new Global();
+        Global global = util.unmarshallReturn();
 
         int start = Utility.readInt01(Utility.START);
         switch (start) {
             case 0:
-                util.unmarshall();
+
+                global.printAllNets();
                 break;
 
             case 1:
                 String netName = Utility.readString(Utility.NET_NAME);
                 net = new Net(netName);
                 if (Utility.readInt01(Utility.SAVING) == 1) {
-                    global.getNetSaved().add(net);
-                    util.marshall(global);
+                    if (global.confirmNet(global.getNetSaved(), net)) {
+                        global.getNetSaved().add(net);
+                        util.marshall(global);
+                    }
                 } else
                     System.out.println(Utility.NOTSAVED);
                 break;

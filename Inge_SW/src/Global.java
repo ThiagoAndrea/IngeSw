@@ -57,11 +57,17 @@ public class Global {
         return true;
     }
 
-    //tostring ad hoc per visualizzare tutte le reti
-    @Override
-    public String toString() {
-        return "Global{" +
-                "netSaved=" + netSaved +
-                '}';
+    public boolean confirmNet (ArrayList<Net> allNets, Net net){
+        for (Net n : allNets){
+            if (sameFlux(n.getFlux(), net.getFlux()))
+                return false;
+        }
+        return true;
+    }
+
+    public void printAllNets() {
+        for (Net n : this.netSaved){
+            n.printnet();
+        }
     }
 }

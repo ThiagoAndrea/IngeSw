@@ -1,5 +1,6 @@
 import javax.xml.bind.annotation.*;
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -92,11 +93,16 @@ public class Net implements Serializable {
 
     }
 
-    @Override
-    public String toString() {
-        return "Net{" +
-                "name='" + name + '\'' +
-                ", allFather=" + allFather +
-                '}';
+
+    public void printnet() {
+        ArrayList<String> print = new ArrayList<>();
+        String s = "Nome della rete: " + this.getName() + "\nLista di elementi: \n";
+        print.add(s);
+        for (Father f : this.getAllFather()) {
+           print.add((f.getClass() + " " + f.getName()) + "\n");
+        }
+        for (String st : print){
+            System.out.print(st);
+        }
     }
 }
