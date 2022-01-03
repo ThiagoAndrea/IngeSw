@@ -10,11 +10,11 @@
             <Flusso>
                 <flux>
                     <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t1"/>
-                    <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p1" Weight="0"/>
+                    <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p2" Weight="0"/>
                 </flux>
                 <flux>
                     <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t1"/>
-                    <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p2" Weight="0"/>
+                    <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p1" Weight="0"/>
                 </flux>
             </Flusso>
         </Rete>
@@ -26,20 +26,65 @@
             </Padri>
             <Flusso>
                 <flux>
+                    <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p1" Weight="0"/>
+                    <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t2"/>
+                </flux>
+                <flux>
+                    <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t2"/>
+                    <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p2" Weight="0"/>
+                </flux>
+                <flux>
                     <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p2" Weight="0"/>
                     <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t1"/>
+                </flux>
+                <flux>
+                    <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p1" Weight="0"/>
+                    <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t1"/>
+                </flux>
+            </Flusso>
+        </Rete>
+        <Rete Name="castello">
+            <Padri>
+                <Padre xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p1" Weight="0"/>
+                <Padre xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t1"/>
+                <Padre xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t2"/>
+                <Padre xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p2" Weight="0"/>
+                <Padre xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p3" Weight="0"/>
+                <Padre xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t3"/>
+                <Padre xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p4" Weight="0"/>
+            </Padri>
+            <Flusso>
+                <flux>
+                    <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p4" Weight="0"/>
+                    <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t1"/>
+                </flux>
+                <flux>
+                    <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t2"/>
+                    <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p3" Weight="0"/>
                 </flux>
                 <flux>
                     <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p1" Weight="0"/>
                     <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t2"/>
                 </flux>
                 <flux>
-                    <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p1" Weight="0"/>
-                    <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t1"/>
+                    <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p3" Weight="0"/>
+                    <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t3"/>
                 </flux>
                 <flux>
-                    <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t2"/>
+                    <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t3"/>
+                    <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p4" Weight="0"/>
+                </flux>
+                <flux>
+                    <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t1"/>
                     <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p2" Weight="0"/>
+                </flux>
+                <flux>
+                    <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p2" Weight="0"/>
+                    <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t3"/>
+                </flux>
+                <flux>
+                    <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p1" Weight="0"/>
+                    <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t1"/>
                 </flux>
             </Flusso>
         </Rete>

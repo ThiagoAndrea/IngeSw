@@ -27,7 +27,8 @@ public class Utility {
     public static final String NET_NAME = "Inserisci un nome da assegnare alla tua rete:\n";
     public static final String CONTINUE_TRANS = "Inserire i nomi delle transizioni collegate a ";
     public static final String BACK = "\nInserire 0 per terminare.";
-    public static final String START = "-\n--\n--- BENVENUTO ---\n--\n-\n\nPremere:\n0 -> per visualizzare le reti salvate\n1 -> per creare una nuova rete";
+    public static final String START = "-\n--\n--- BENVENUTO ---\n--\n-\n\n";
+    public static final String MENU = "\n\nPremere:\n0 -> per terminare il programma\n1 -> per visualizzare le reti salvare\n2 -> per creare una nuova rete";
 
 
     private static Scanner createScanner() {

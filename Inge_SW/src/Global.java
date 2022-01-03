@@ -66,8 +66,12 @@ public class Global {
     }
 
     public void printAllNets() {
+        int a=1;
         for (Net n : this.netSaved){
+            System.out.println("<->-<->-<->-<->-<->");
+            System.out.println(a++);
             n.printnet();
+            System.out.println();
         }
     }
 }

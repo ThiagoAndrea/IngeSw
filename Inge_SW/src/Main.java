@@ -10,15 +10,17 @@ public class Main {
 
         Net net = null;
         Global global = util.unmarshallReturn();
-
-        int start = Utility.readInt01(Utility.START);
+        System.out.println(Utility.START);
+        int start = Utility.readInt(Utility.MENU);
+        while(start != 0){
+            start = Utility.readInt(Utility.MENU);
         switch (start) {
-            case 0:
 
+            case 1:
                 global.printAllNets();
                 break;
 
-            case 1:
+            case 2:
                 String netName = Utility.readString(Utility.NET_NAME);
                 net = new Net(netName);
                 if (Utility.readInt01(Utility.SAVING) == 1) {
@@ -29,8 +31,11 @@ public class Main {
                 } else
                     System.out.println(Utility.NOTSAVED);
                 break;
+
+            default:
+                break;
         }
-        //util.unmarshall();
+        }
 
     }
 }
