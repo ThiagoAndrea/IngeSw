@@ -11,31 +11,32 @@ public class Main {
         Net net = null;
         Global global = util.unmarshallReturn();
         System.out.println(Utility.START);
-        int start = Utility.readInt(Utility.MENU);
-        while(start != 0){
+        int start;
+        do {
             start = Utility.readInt(Utility.MENU);
-        switch (start) {
+            switch (start) {
 
-            case 1:
-                global.printAllNets();
-                break;
+                case 1:
+                    global.printAllNets();
+                    break;
 
-            case 2:
-                String netName = Utility.readString(Utility.NET_NAME);
-                net = new Net(netName);
-                if (Utility.readInt01(Utility.SAVING) == 1) {
-                    if (global.confirmNet(global.getNetSaved(), net)) {
-                        global.getNetSaved().add(net);
-                        util.marshall(global);
-                    }
-                } else
-                    System.out.println(Utility.NOTSAVED);
-                break;
+                case 2:
+                    String netName = Utility.readString(Utility.NET_NAME);
+                    net = new Net(netName);
+                    if (Utility.readInt01(Utility.SAVING) == 1) {
+                        if (global.confirmNet(global.getNetSaved(), net)) {
+                            global.getNetSaved().add(net);
+                            util.marshall(global);
+                        }
+                    } else
+                        System.out.println(Utility.NOTSAVED);
+                    break;
 
-            default:
-                break;
-        }
-        }
-
+                default:
+                    break;
+            }
+        } while (start != 0);
     }
+
 }
+
