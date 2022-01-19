@@ -25,10 +25,9 @@ public class Utility {
     public static final String NOTSAVED = "La rete creata non è stata salvata come da te richiesto.";
     public static final String WELCOME = "Benvenuto nella creazione di una rete, premere:\n0 -> per iniziare da una transizione\n1 -> per iniziare da un posto\n";
     public static final String NET_NAME = "Inserisci un nome da assegnare alla tua rete:\n";
-    public static final String CONTINUE_TRANS = "Inserire i nomi delle transizioni collegate a ";
     public static final String BACK = "\nInserire 0 per terminare.";
     public static final String START = "-\n--\n--- BENVENUTO ---\n--\n-\n\n";
-    public static final String MENU = "\n\nPremere:\n0 -> per terminare il programma\n1 -> per visualizzare le reti salvare\n2 -> per creare una nuova rete";
+    public static final String MENU = "\n\nPremere:\n0 -> per terminare il programma\n1 -> per visualizzare le reti salvare\n2 -> per creare una nuova rete\n3 -> per trasformare una rete salvata in una rete di Petri";
 
 
     private static Scanner createScanner() {

@@ -3,6 +3,7 @@ public class Couple {
 
     private Father first;
     private Father second;
+    private int weight = 1;
 
 
     public Father getFirst() {
@@ -19,6 +20,14 @@ public class Couple {
 
     public void setSecond(Father second) {
         this.second = second;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
     }
 
     @Override

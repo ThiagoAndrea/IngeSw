@@ -32,6 +32,12 @@ public class Main {
                         System.out.println(Utility.NOTSAVED);
                     break;
 
+                case 3:
+                    //stampa reti
+                    //Scegli rete
+
+                    break;
+
                 default:
                     break;
             }
