@@ -28,6 +28,9 @@ public class Utility {
     public static final String BACK = "\nInserire 0 per terminare.";
     public static final String START = "-\n--\n--- BENVENUTO ---\n--\n-\n\n";
     public static final String MENU = "\n\nPremere:\n0 -> per terminare il programma\n1 -> per visualizzare le reti salvare\n2 -> per creare una nuova rete\n3 -> per trasformare una rete salvata in una rete di Petri";
+    public static final String INSERT_WEIGHT = "Inserire il valore del nuovo peso: ";
+    public static final String CHOOSE_COUPLE = "Digitare il numero della coppia della quale vuoi modificare il peso (premere 0 se hai finito le modifiche): ";
+
 
 
     private static Scanner createScanner() {
@@ -61,6 +64,27 @@ public class Utility {
             try {
                 value = read.nextInt();
                 if (value == 0 || value == 1)
+                    end = true;
+                else
+                    System.out.println(ERROR_NUMBER);
+            } catch (InputMismatchException e) {
+                System.out.println(ERROR_FORMAT);
+                String trash = read.next();
+            }
+        } while ((!end));
+        return value;
+
+    }
+
+    public static int readPositiveIntNot0(String message) {
+        boolean end = false;
+        int value = 0;
+        Scanner read = new Scanner(System.in);
+        do {
+            System.out.println(message);
+            try {
+                value = read.nextInt();
+                if (value > 0)
                     end = true;
                 else
                     System.out.println(ERROR_NUMBER);

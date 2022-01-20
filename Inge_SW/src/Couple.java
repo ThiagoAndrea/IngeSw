@@ -32,11 +32,10 @@ public class Couple {
 
     @Override
     public String toString() {
-        return "Couple{" +
-                "first=" + first.getName() +
-                ", second=" + second.getName() +
+        return "{" +
+                first.getName() +
+                ", " + second.getName() +
                 '}';
     }
-
 
 }

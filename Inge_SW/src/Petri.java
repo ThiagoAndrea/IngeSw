@@ -1,8 +1,7 @@
-public class Petri extends Net{
+import java.util.HashMap;
+import java.util.Map;
 
-
-
-
+public class Petri extends Net {
 
 
     public Petri() {
@@ -10,10 +9,25 @@ public class Petri extends Net{
         //
     }
 
-    public Petri modifyNet (Net fatherNet){
-        Petri petri = new Petri();
+    public Petri(Net fatherNet) {
+        HashMap<Integer, Couple> map = new HashMap<>();
+        int i = 1;
+        for (Couple c : fatherNet.getFlux()) {
+            map.put(i, c);
+            i++;
+        }
+        int number = 1;
+        int newWeight;
+        while (number != 0) {
+            for (Map.Entry<Integer, Couple> entry : map.entrySet()) {
+                System.out.println(entry.getKey() + "-->  " + entry.getValue().toString() + " peso: " + entry.getValue().getWeight());
+            }
+            number = Utility.readInt(Utility.CHOOSE_COUPLE);
+            newWeight = Utility.readPositiveIntNot0(Utility.INSERT_WEIGHT);
+            map.get(number).setWeight(newWeight);
+        }
 
-        return petri;
     }
+
 }
 

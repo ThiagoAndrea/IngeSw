@@ -44,7 +44,6 @@ public class Net implements Serializable {
     public Net() {
     }
 
-    //ATTENZIONE HO COMMENTATO PER POTER USARE IL COSTRUTTORE NET COMPLETAMENTE VUOTO
 
     public Net(String netName) {
 

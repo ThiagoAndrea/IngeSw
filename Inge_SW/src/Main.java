@@ -35,6 +35,9 @@ public class Main {
                 case 3:
                     //stampa reti
                     //Scegli rete
+                    String name = "acoen";
+                    Net n = new Net(name);
+                    Petri p = new Petri(n);
 
                     break;
 
