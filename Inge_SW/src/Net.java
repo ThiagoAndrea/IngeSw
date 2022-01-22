@@ -100,9 +100,35 @@ public class Net implements Serializable {
 
     public Net clone(Net cl) {
         Net cloned = new Net();
-        HashSet<Couple> clonedFlux = new HashSet<>();
-        ArrayList<Father> clonedFathers = new ArrayList<>();
 
+        for (Father f : cl.getAllFather()) {
+            if (f.getClass().getName().equals("Transition")) {
+                Transition clonedTrans = new Transition();
+                clonedTrans.setName(f.getName());
+                cloned.getAllFather().add(clonedTrans);
+            } else {
+                Place clonedPlace = new Place();
+                clonedPlace.setName(f.getName());
+                cloned.getAllFather().add(clonedPlace);
+            }
+        }
+
+        for (Couple c : cl.getFlux()){
+            Couple clonedCouple = new Couple();
+            for (Father f : cloned.getAllFather()){
+                if(f.getName().equals(c.getFirst().getName())){
+                    clonedCouple.setFirst(f);
+                }
+            }
+            for (Father f : cloned.getAllFather()){
+                if(f.getName().equals(c.getSecond().getName())){
+                    clonedCouple.setSecond(f);
+                }
+            }
+            cloned.getFlux().add(clonedCouple);
+        }
+
+/*
         for (Couple c : cl.getFlux()) {
                 if (c.getFirst().getClass().getName().equals("Transition")) {
                     if(Utility.nameNotUsedFatherList(clonedFathers, c.getFirst().getName()) &&
@@ -148,9 +174,9 @@ public class Net implements Serializable {
 
 
             }
-
+*/
         return cloned;
-                }
+    }
 
     public void printnet() {
         ArrayList<String> print = new ArrayList<>();

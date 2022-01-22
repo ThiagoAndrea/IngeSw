@@ -5,6 +5,8 @@ public class Couple {
     private Father second;
     private int weight = 1;
 
+    public Couple() {
+    }
 
     public Father getFirst() {
         return first;

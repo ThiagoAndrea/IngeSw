@@ -160,4 +160,13 @@ public class Utility {
         return !ok;
     }
 
+    public static Father pickFather (ArrayList<Father> array, String name){
+
+        for(Father f : array)
+        {
+            if (f.getName().equals(name))
+                return f;
+        }
+        return null;
+    }
 }

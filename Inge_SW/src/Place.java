@@ -9,7 +9,7 @@ public class Place extends Father implements Serializable {
     private String name;
 
     @XmlTransient
-    private int weight;
+    private int token;
 
     public Place() {
     }
@@ -25,13 +25,13 @@ public class Place extends Father implements Serializable {
         this.name = name;
     }
 
-    @XmlAttribute(name = "Weight", required = false)
-    public int getWeight() {
-        return weight;
+    @XmlAttribute(name = "Token", required = false)
+    public int getToken() {
+        return token;
     }
 
-    public void setWeight(int weight) {
-        this.weight = weight;
+    public void setToken(int token) {
+        this.token = token;
     }
 
     /**
@@ -43,7 +43,6 @@ public class Place extends Father implements Serializable {
         /*Creo un array di stringhe di nomi di transizioni che utilizzo come supporto per verificare che il nome della transizione
          inserita dal configuratore non sia già stata utilizzata */
         ArrayList<String> connections = new ArrayList<>();
-        // questo ciclo continua a chiedere se vuole creare altre transizioni al posto scelto
         if (Utility.continueWriting(Utility.CONTINUE_TRANSITION + this.getName() + "? " + Utility.CHOICE)) {
             ArrayList<String> connections2 = new ArrayList<>();
             do {
@@ -60,18 +59,29 @@ public class Place extends Father implements Serializable {
                 while (!Utility.nameNotUsedStringList(connections, s)) {
                     s = Utility.readString(Utility.ERROR_NAME2);
                 }
-                Transition trans = new Transition();
-                trans.setName(s);
-                Couple c = new Couple(); //Creo la coppia posto-transizione da inserire nel flusso della rete
-                c.setFirst(this);
-                c.setSecond(trans);
-                net.getFlux().add(c);
-                connections.add(s);
-                transCreated.add(trans);
+                if (Utility.nameNotUsedFatherList(net.getAllFather(), s))
+                {
+                    Transition trans = new Transition();
+                    trans.setName(s);
+                    net.getAllFather().add(trans);
+                    Couple c = new Couple(); //Creo la coppia posto-transizione da inserire nel flusso della rete
+                    c.setFirst(this);
+                    c.setSecond(trans);
+                    net.getFlux().add(c);
+                    connections.add(s);
+                    transCreated.add(trans);
+                }
+                else
+                {
+                    Couple c = new Couple(); //Creo la coppia posto-transizione da inserire nel flusso della rete
+                    c.setFirst(this);
+                    c.setSecond(Utility.pickFather(net.getAllFather(), s));
+                    net.getFlux().add(c);
+                    connections.add(s);
+                }
             }
-
         }
-
+        if(Utility.nameNotUsedFatherList(net.getAllFather(), this.getName()))
         net.getAllFather().add(this);
     }
 
