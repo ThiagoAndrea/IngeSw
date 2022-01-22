@@ -74,4 +74,16 @@ public class Global {
             System.out.println();
         }
     }
+
+    public Net pickNet (ArrayList<Net> list ){
+        int number;
+
+        do{
+            number = Utility.readInt(Utility.CHOOSE_NET);
+        }while (number < 0 || number > list.size());
+
+        number--;
+
+        return list.get(number);
+    }
 }

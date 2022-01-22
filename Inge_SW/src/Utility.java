@@ -25,11 +25,13 @@ public class Utility {
     public static final String NOTSAVED = "La rete creata non è stata salvata come da te richiesto.";
     public static final String WELCOME = "Benvenuto nella creazione di una rete, premere:\n0 -> per iniziare da una transizione\n1 -> per iniziare da un posto\n";
     public static final String NET_NAME = "Inserisci un nome da assegnare alla tua rete:\n";
+    public static final String PETRI_NET_NAME = "Inserisci un nome da assegnare alla tua rete di Petri:\n";
     public static final String BACK = "\nInserire 0 per terminare.";
     public static final String START = "-\n--\n--- BENVENUTO ---\n--\n-\n\n";
     public static final String MENU = "\n\nPremere:\n0 -> per terminare il programma\n1 -> per visualizzare le reti salvare\n2 -> per creare una nuova rete\n3 -> per trasformare una rete salvata in una rete di Petri";
     public static final String INSERT_WEIGHT = "Inserire il valore del nuovo peso: ";
     public static final String CHOOSE_COUPLE = "Digitare il numero della coppia della quale vuoi modificare il peso (premere 0 se hai finito le modifiche): ";
+    public static final String CHOOSE_NET = "Inserire il numero della rete da modificare:\n";
 
 
 

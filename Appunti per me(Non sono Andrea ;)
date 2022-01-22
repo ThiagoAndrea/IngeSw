@@ -43,13 +43,16 @@ Global
   salva la reteCreata;
 
   COSA FARE:
+    0. clonatura
+  1. chiedere di aggiungere la marcatura (stampare tutti i posti e chiedere se vuole metterci dei token)
+  2. chiedere se si vuole salvare la rete creata
+  3. creare arrayLIst di reti di petri in global
+  4. visualizzare tutte le reti di petri quando voglio
+  5. fare un metodo che mi confronti due reti di petri uguali
 
-  1. Chiedere all'utente di salvare la rete nel file.
-  2. Sovrascrivere la rete all'interno del file se verificata la condizione di salvataggio.
-  3. Visualizzare il file con tutte le reti.
 
 
-
+POLIMORFISMO QUANDO COPIAMO LA RETE
 
 
 

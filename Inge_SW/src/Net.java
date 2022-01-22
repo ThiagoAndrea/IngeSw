@@ -1,3 +1,5 @@
+import jdk.jshell.execution.Util;
+
 import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.lang.reflect.Array;
@@ -33,6 +35,10 @@ public class Net implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setAllFather(ArrayList<Father> allFather) {
+        this.allFather = allFather;
     }
 
     @XmlElementWrapper(name = "Padri", required = true)
@@ -92,15 +98,68 @@ public class Net implements Serializable {
 
     }
 
+    public Net clone(Net cl) {
+        Net cloned = new Net();
+        HashSet<Couple> clonedFlux = new HashSet<>();
+        ArrayList<Father> clonedFathers = new ArrayList<>();
+
+        for (Couple c : cl.getFlux()) {
+                if (c.getFirst().getClass().getName().equals("Transition")) {
+                    if(Utility.nameNotUsedFatherList(clonedFathers, c.getFirst().getName()) &&
+                    Utility.nameNotUsedFatherList(clonedFathers, c.getSecond().getName())) {
+                        Transition clonedtr1 = new Transition();
+                        clonedtr1.setName(c.getFirst().getName());
+                        clonedFathers.add(clonedtr1);
+                        Place clonedpl2 = new Place();
+                        clonedpl2.setName(c.getSecond().getName());
+                        clonedFathers.add(clonedpl2);
+                        Couple clonedCouple = new Couple();
+                        clonedCouple.setFirst(clonedtr1);
+                        clonedCouple.setSecond(clonedpl2);
+                        clonedFlux.add(clonedCouple);
+                    }
+                    else if(Utility.nameNotUsedFatherList(clonedFathers, c.getFirst().getName())){
+                        Transition clonedtr1 = new Transition();
+                        clonedtr1.setName(c.getFirst().getName());
+                    }
+                    else if(Utility.nameNotUsedFatherList(clonedFathers, c.getSecond().getName())){
+                        Place clonedpl2 = new Place();
+                        clonedpl2.setName(c.getSecond().getName());
+                    }
+
+                } else {
+                    if(Utility.nameNotUsedFatherList(clonedFathers, c.getFirst().getName()) &&
+                            Utility.nameNotUsedFatherList(clonedFathers, c.getSecond().getName())) {
+                        Transition clonedtr1 = new Transition();
+                        clonedtr1.setName(c.getFirst().getName());
+                        Place clonedpl2 = new Place();
+                        clonedpl2.setName(c.getSecond().getName());
+                    }
+                    else if(Utility.nameNotUsedFatherList(clonedFathers, c.getFirst().getName())){
+                        Place clonedpl2 = new Place();
+                        clonedpl2.setName(c.getSecond().getName());
+                    }
+                    else if(Utility.nameNotUsedFatherList(clonedFathers, c.getSecond().getName())){
+                        Transition clonedtr1 = new Transition();
+                        clonedtr1.setName(c.getFirst().getName());
+                    }
+                }
+
+
+
+            }
+
+        return cloned;
+                }
 
     public void printnet() {
         ArrayList<String> print = new ArrayList<>();
         String s = "Nome della rete: " + this.getName() + "\nLista di elementi: \n";
         print.add(s);
         for (Father f : this.getAllFather()) {
-           print.add((f.getClass() + " " + f.getName()) + "\n");
+            print.add((f.getClass() + " " + f.getName()) + "\n");
         }
-        for (String st : print){
+        for (String st : print) {
             System.out.print(st);
         }
     }
