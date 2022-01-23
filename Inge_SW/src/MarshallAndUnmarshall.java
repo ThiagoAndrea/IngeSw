@@ -98,7 +98,7 @@ public class MarshallAndUnmarshall {
             System.out.println("Errore nell'inizializzazione del reader:");
         }
     }
-
+/*
     public void readXml() {
         try {
             while (xmlr.hasNext()) {
@@ -117,5 +117,5 @@ public class MarshallAndUnmarshall {
         }
     }
 
-
+*/
 }

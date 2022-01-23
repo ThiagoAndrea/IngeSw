@@ -71,8 +71,7 @@ public class Place extends Father implements Serializable {
                 while (!Utility.nameNotUsedStringList(connections, s)) {
                     s = Utility.readString(Utility.ERROR_NAME2);
                 }
-                if (Utility.nameNotUsedFatherList(net.getAllFather(), s))
-                {
+                if (Utility.nameNotUsedFatherList(net.getAllFather(), s)) {
                     Transition trans = new Transition();
                     trans.setName(s);
                     net.getAllFather().add(trans);
@@ -82,9 +81,7 @@ public class Place extends Father implements Serializable {
                     net.getFlux().add(c);
                     connections.add(s);
                     transCreated.add(trans);
-                }
-                else
-                {
+                } else {
                     Couple c = new Couple(); //Creo la coppia posto-transizione da inserire nel flusso della rete
                     c.setFirst(this);
                     c.setSecond(Utility.pickFather(net.getAllFather(), s));
@@ -93,8 +90,10 @@ public class Place extends Father implements Serializable {
                 }
             }
         }
-        if(Utility.nameNotUsedFatherList(net.getAllFather(), this.getName()))
-        net.getAllFather().add(this);
+        if (Utility.nameNotUsedFatherList(net.getAllFather(), this.getName()))
+            net.getAllFather().add(this);
+
+        this.setChecked(true);
     }
 
 }

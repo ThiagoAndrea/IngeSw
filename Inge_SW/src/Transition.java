@@ -75,21 +75,31 @@ public class Transition extends Father implements Serializable {
                 while (!Utility.nameNotUsedStringList(connections, s)) {
                     s = Utility.readString(Utility.ERROR_NAME2);
                 }
-                Place p = new Place();
-                p.setName(s);
-                Couple c = new Couple(); //Creo la coppia posto-transizione da inserire nel flusso della rete
-                c.setFirst(this);
-                c.setSecond(p);
-                net.getFlux().add(c);
-                connections.add(s);
-                placeCreated.add(p);
+                if (Utility.nameNotUsedFatherList(net.getAllFather(), s)) {
+                    Place p = new Place();
+                    p.setName(s);
+                    net.getAllFather().add(p);
+                    Couple c = new Couple(); //Creo la coppia posto-transizione da inserire nel flusso della rete
+                    c.setFirst(this);
+                    c.setSecond(p);
+                    net.getFlux().add(c);
+                    connections.add(s);
+                    placeCreated.add(p);
+                } else {
+                    Couple c = new Couple(); //Creo la coppia posto-transizione da inserire nel flusso della rete
+                    c.setFirst(this);
+                    c.setSecond(Utility.pickFather(net.getAllFather(),s));
+                    net.getFlux().add(c);
+                    connections.add(s);
+                }
             }
-
+            if(Utility.nameNotUsedFatherList(net.getAllFather(), this.getName()))
             net.getAllFather().add(this);
+
+            this.setChecked(true);
 
         }
     }
-
 
 
 }

@@ -71,7 +71,7 @@ public class Net implements Serializable {
         while (!placesToDo.isEmpty() || !transToDo.isEmpty()) {
             if (!placesToDo.isEmpty()) {
                 for (Place place : placesToDo) {
-                    if (Utility.nameNotUsedFatherList(this.getAllFather(), place.getName())) {
+                    if (!place.getChecked()) {
                         place.createTransForPlace(this, transToDo);
                     }
                 }
@@ -79,7 +79,7 @@ public class Net implements Serializable {
                 placesToDo.clear();
             } else {
                 for (Transition transition : transToDo) {
-                    if (Utility.nameNotUsedFatherList(this.getAllFather(), transition.getName())) {
+                    if (!transition.getChecked()) {
                         transition.createPlacesForTrans(this, placesToDo);
                     }
                 }
@@ -128,53 +128,6 @@ public class Net implements Serializable {
             cloned.getFlux().add(clonedCouple);
         }
 
-/*
-        for (Couple c : cl.getFlux()) {
-                if (c.getFirst().getClass().getName().equals("Transition")) {
-                    if(Utility.nameNotUsedFatherList(clonedFathers, c.getFirst().getName()) &&
-                    Utility.nameNotUsedFatherList(clonedFathers, c.getSecond().getName())) {
-                        Transition clonedtr1 = new Transition();
-                        clonedtr1.setName(c.getFirst().getName());
-                        clonedFathers.add(clonedtr1);
-                        Place clonedpl2 = new Place();
-                        clonedpl2.setName(c.getSecond().getName());
-                        clonedFathers.add(clonedpl2);
-                        Couple clonedCouple = new Couple();
-                        clonedCouple.setFirst(clonedtr1);
-                        clonedCouple.setSecond(clonedpl2);
-                        clonedFlux.add(clonedCouple);
-                    }
-                    else if(Utility.nameNotUsedFatherList(clonedFathers, c.getFirst().getName())){
-                        Transition clonedtr1 = new Transition();
-                        clonedtr1.setName(c.getFirst().getName());
-                    }
-                    else if(Utility.nameNotUsedFatherList(clonedFathers, c.getSecond().getName())){
-                        Place clonedpl2 = new Place();
-                        clonedpl2.setName(c.getSecond().getName());
-                    }
-
-                } else {
-                    if(Utility.nameNotUsedFatherList(clonedFathers, c.getFirst().getName()) &&
-                            Utility.nameNotUsedFatherList(clonedFathers, c.getSecond().getName())) {
-                        Transition clonedtr1 = new Transition();
-                        clonedtr1.setName(c.getFirst().getName());
-                        Place clonedpl2 = new Place();
-                        clonedpl2.setName(c.getSecond().getName());
-                    }
-                    else if(Utility.nameNotUsedFatherList(clonedFathers, c.getFirst().getName())){
-                        Place clonedpl2 = new Place();
-                        clonedpl2.setName(c.getSecond().getName());
-                    }
-                    else if(Utility.nameNotUsedFatherList(clonedFathers, c.getSecond().getName())){
-                        Transition clonedtr1 = new Transition();
-                        clonedtr1.setName(c.getFirst().getName());
-                    }
-                }
-
-
-
-            }
-*/
         return cloned;
     }
 
