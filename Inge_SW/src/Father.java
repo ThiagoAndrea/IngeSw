@@ -10,4 +10,8 @@ public abstract class Father implements Serializable {
     public abstract String getName();
 
     public abstract void setName(String name);
+
+    public abstract Boolean getChecked();
+
+    public abstract void setChecked (Boolean checked);
 }

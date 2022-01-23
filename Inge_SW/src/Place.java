@@ -8,8 +8,20 @@ public class Place extends Father implements Serializable {
     @XmlTransient
     private String name;
 
+    private Boolean checked = false;
+
     @XmlTransient
     private int token;
+
+    @Override
+    public void setChecked(Boolean checked) {
+        this.checked = checked;
+    }
+
+    @Override
+    public Boolean getChecked() {
+        return checked;
+    }
 
     public Place() {
     }

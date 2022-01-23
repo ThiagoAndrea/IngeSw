@@ -11,6 +11,8 @@ public class Transition extends Father implements Serializable {
     @XmlTransient
     private String name;
 
+    private Boolean checked = false;
+
     @XmlTransient
     private String time;
 
@@ -26,6 +28,16 @@ public class Transition extends Father implements Serializable {
     @Override
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public Boolean getChecked() {
+        return checked;
+    }
+
+    @Override
+    public void setChecked(Boolean checked) {
+        this.checked = checked;
     }
 
     @XmlAttribute(name = "Time", required = false)
