@@ -91,7 +91,6 @@ public class Net implements Serializable {
 
     public void printFlux() {
 
-        System.out.println("Il flusso della rete creata è il seguente: ");
         for (Couple c : this.getFlux()) {
             System.out.println(c.toString());
         }
@@ -133,13 +132,16 @@ public class Net implements Serializable {
 
     public void printnet() {
         ArrayList<String> print = new ArrayList<>();
-        String s = "Nome della rete: " + this.getName() + "\nLista di elementi: \n";
+        String s = "Nome della rete: " + this.getName() + "\nLista di elementi:\n";
         print.add(s);
         for (Father f : this.getAllFather()) {
-            print.add((f.getClass() + " " + f.getName()) + "\n");
+            print.add((f.getClass().getName() + " " + f.getName()) + "  ");
         }
+        String t = "\nFlusso della rete:\n";
+        print.add(t);
         for (String st : print) {
             System.out.print(st);
         }
+        printFlux();
     }
 }
