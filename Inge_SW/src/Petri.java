@@ -1,3 +1,4 @@
+import javax.lang.model.type.ArrayType;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -29,13 +30,32 @@ public class Petri extends Net {
             for (Map.Entry<Integer, Couple> entry : map.entrySet()) {
                 System.out.println(entry.getKey() + "-->  " + entry.getValue().toString() + " peso: " + entry.getValue().getWeight());
             }
-            number = Utility.readInt(Utility.CHOOSE_COUPLE);
+            number = Utility.readPositiveIntWithMax(Utility.CHOOSE_COUPLE, map.size());
             if (number != 0) {
                 newWeight = Utility.readPositiveIntNot0(Utility.INSERT_WEIGHT);
                 map.get(number).setWeight(newWeight);
             }
         }
+        // Inserimento dei token
+        ArrayList<Place> places = new ArrayList<>();
+        for(Father f : this.getAllFather()){
+            if(f.getClass().getName().equals("Place")){
+                places.add((Place) f);
+            }
+        }
+        int j, number2=1, newToken;
+        while(number2!=0) {
+            j = 1;
+            for(Place p : places){
+                System.out.println(j++ + ": " + p.getName() + " -> " + p.getToken());
+            }
+                number2 = (Utility.readPositiveIntWithMax(Utility.CHOOSE_PLACE, places.size()));
+            if (number2 != 0) {
+                newToken = Utility.readPositiveIntNot0(Utility.INSERT_TOKEN);
+                places.get(number2-1).setToken(newToken);
+            }
 
+        }
     }
 
 

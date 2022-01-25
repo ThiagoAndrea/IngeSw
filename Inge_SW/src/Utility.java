@@ -30,8 +30,10 @@ public class Utility {
     public static final String START = "-\n--\n--- BENVENUTO ---\n--\n-\n\n";
     public static final String MENU = "\n\nPremere:\n0 -> per terminare il programma\n1 -> per visualizzare le reti salvare\n2 -> per creare una nuova rete\n3 -> per trasformare una rete salvata in una rete di Petri";
     public static final String INSERT_WEIGHT = "Inserire il valore del nuovo peso: ";
+    public static final String INSERT_TOKEN = "Inserire il valore del token: ";
     public static final String CHOOSE_COUPLE = "Digitare il numero della coppia della quale vuoi modificare il peso (premere 0 se hai finito le modifiche): ";
     public static final String CHOOSE_NET = "Inserire il numero della rete da modificare:\n";
+    public static final String CHOOSE_PLACE = "Inserire il numero del posto di cui vuoi modificare il token (premere 0 se hai finito le modifiche):\n";
 
 
 
@@ -87,6 +89,27 @@ public class Utility {
             try {
                 value = read.nextInt();
                 if (value > 0)
+                    end = true;
+                else
+                    System.out.println(ERROR_NUMBER);
+            } catch (InputMismatchException e) {
+                System.out.println(ERROR_FORMAT);
+                String trash = read.next();
+            }
+        } while ((!end));
+        return value;
+
+    }
+
+    public static int readPositiveIntWithMax(String message, int max) {
+        boolean end = false;
+        int value = 0;
+        Scanner read = new Scanner(System.in);
+        do {
+            System.out.println(message);
+            try {
+                value = read.nextInt();
+                if (value >= 0 && value<= max)
                     end = true;
                 else
                     System.out.println(ERROR_NUMBER);
