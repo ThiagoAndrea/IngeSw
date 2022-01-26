@@ -24,8 +24,8 @@ public class Main {
                     String netName = Utility.readString(Utility.NET_NAME);
                     net = new Net(netName);
                     if (Utility.readInt01(Utility.SAVING) == 1) {
-                        if (global.confirmNet(global.getNetSaved(), net)) {
-                            global.getNetSaved().add(net);
+                        if (global.confirmNet(global.getNetsSaved(), net)) {
+                            global.getNetsSaved().add(net);
                             util.marshall(global);
                         }
                     } else
@@ -34,8 +34,14 @@ public class Main {
 
                 case 3:
                     global.printAllNets();
-                    Net picked = global.pickNet(global.getNetSaved());
+                    Net picked = global.pickNet(global.getNetsSaved());
                     Petri p = new Petri(picked);
+                    if(Utility.readInt01(Utility.SAVING) == 1){
+                        if(global.confirmPetriNet(global.getPetriNetsSaved(), p)){
+                            global.getPetriNetsSaved().add(p);
+                            util.marshall(global);
+                        }
+                    }
 
                     break;
 

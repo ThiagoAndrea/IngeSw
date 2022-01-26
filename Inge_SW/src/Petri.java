@@ -37,12 +37,8 @@ public class Petri extends Net {
             }
         }
         // Inserimento dei token
-        ArrayList<Place> places = new ArrayList<>();
-        for(Father f : this.getAllFather()){
-            if(f.getClass().getName().equals("Place")){
-                places.add((Place) f);
-            }
-        }
+
+        ArrayList<Place> places = Utility.getPlacesFromFathers(this.getAllFather());
         int j, number2=1, newToken;
         while(number2!=0) {
             j = 1;

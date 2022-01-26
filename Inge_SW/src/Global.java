@@ -7,16 +7,26 @@ import java.util.HashSet;
 public class Global {
 
     @XmlTransient
-    private ArrayList<Net> netSaved = new ArrayList<>();
+    private ArrayList<Net> netsSaved = new ArrayList<>();
+
+    private ArrayList<Petri> PetriNetsSaved = new ArrayList<>();
 
     @XmlElementWrapper(name = "Reti")
     @XmlElement(name = "Rete")
-    public ArrayList<Net> getNetSaved() {
-        return netSaved;
+    public ArrayList<Net> getNetsSaved() {
+        return netsSaved;
     }
 
-    public void setNetSaved(ArrayList<Net> netSaved) {
-        this.netSaved = netSaved;
+    public ArrayList<Petri> getPetriNetsSaved() {
+        return PetriNetsSaved;
+    }
+
+    public void setPetriNetsSaved(ArrayList<Petri> petriNetsSaved) {
+        PetriNetsSaved = petriNetsSaved;
+    }
+
+    public void setNetsSaved(ArrayList<Net> netsSaved) {
+        this.netsSaved = netsSaved;
     }
 
     /**
@@ -46,13 +56,26 @@ public class Global {
     private  boolean sameCouple(Couple a, Couple b) {
         return a.getFirst().getName().equals(b.getFirst().getName()) &&
                 a.getSecond().getName().equals(b.getSecond().getName()) && a.getFirst().getClass().equals(b.getFirst().getClass()) &&
-                a.getSecond().getClass().equals(b.getSecond().getClass());
+                a.getSecond().getClass().equals(b.getSecond().getClass()) && (a.getWeight()==b.getWeight());
     }
 
     public  boolean sameFlux(HashSet<Couple> flux1, HashSet<Couple> flux2) {
         for (Couple c1 : flux1) {
             if(!containCouple(flux2, c1))
                 return false;
+        }
+        return true;
+    }
+
+    public  boolean samePlacesToken(ArrayList<Place> array1, ArrayList<Place> array2) {
+        for (Place p1 : array1) {
+            for(Place p2 : array2){
+                if(p1.getName()==p2.getName()){
+                    if(p1.getToken()!=p2.getToken()){
+                        return false;
+                    }
+                }
+            }
         }
         return true;
     }
@@ -65,9 +88,18 @@ public class Global {
         return true;
     }
 
+    public boolean confirmPetriNet (ArrayList<Petri> allPetri, Petri singlePetri){
+        for (Petri p : allPetri){
+            if (sameFlux(p.getFlux(), singlePetri.getFlux()) &&
+                    samePlacesToken(Utility.getPlacesFromFathers(p.getAllFather()), Utility.getPlacesFromFathers(singlePetri.getAllFather())))
+                return false;
+        }
+        return true;
+    }
+
     public void printAllNets() {
         int a=1;
-        for (Net n : this.netSaved){
+        for (Net n : this.netsSaved){
             System.out.println("<->-<->-<->-<->-<->");
             System.out.println(a++);
             n.printnet();

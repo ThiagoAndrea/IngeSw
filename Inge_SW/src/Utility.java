@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.InputMismatchException;
@@ -191,5 +192,15 @@ public class Utility {
                 return f;
         }
         return null;
+    }
+
+    public static ArrayList<Place> getPlacesFromFathers (ArrayList<Father> fathers){
+        ArrayList<Place> places = new ArrayList<>();
+        for(Father f : fathers){
+            if(f.getClass().getName().equals("Place")){
+                places.add((Place) f);
+            }
+        }
+        return places;
     }
 }
