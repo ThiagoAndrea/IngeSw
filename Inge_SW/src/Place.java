@@ -8,6 +8,7 @@ public class Place extends Father implements Serializable {
     @XmlTransient
     private String name;
 
+    @XmlTransient
     private Boolean checked = false;
 
     @XmlTransient
@@ -18,12 +19,10 @@ public class Place extends Father implements Serializable {
         this.checked = checked;
     }
 
+    @XmlTransient
     @Override
     public Boolean getChecked() {
         return checked;
-    }
-
-    public Place() {
     }
 
     @XmlAttribute(name = "Name", required = true)
@@ -44,6 +43,9 @@ public class Place extends Father implements Serializable {
 
     public void setToken(int token) {
         this.token = token;
+    }
+
+    public Place() {
     }
 
     /**

@@ -60,10 +60,19 @@
             </Padri>
             <Flusso>
                 <flux>
-                    <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p1" Token="0">
+                    <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p2" Token="0">
                         <checked>false</checked>
                     </first>
-                    <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t2">
+                    <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t3">
+                        <checked>false</checked>
+                    </second>
+                    <weight>1</weight>
+                </flux>
+                <flux>
+                    <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t1">
+                        <checked>false</checked>
+                    </first>
+                    <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p2" Token="0">
                         <checked>false</checked>
                     </second>
                     <weight>1</weight>
@@ -78,10 +87,19 @@
                     <weight>1</weight>
                 </flux>
                 <flux>
-                    <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p2" Token="0">
+                    <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p1" Token="0">
                         <checked>false</checked>
                     </first>
-                    <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t3">
+                    <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t2">
+                        <checked>false</checked>
+                    </second>
+                    <weight>1</weight>
+                </flux>
+                <flux>
+                    <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t3">
+                        <checked>false</checked>
+                    </first>
+                    <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p4" Token="0">
                         <checked>false</checked>
                     </second>
                     <weight>1</weight>
@@ -105,28 +123,10 @@
                     <weight>1</weight>
                 </flux>
                 <flux>
-                    <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t1">
-                        <checked>false</checked>
-                    </first>
-                    <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p2" Token="0">
-                        <checked>false</checked>
-                    </second>
-                    <weight>1</weight>
-                </flux>
-                <flux>
                     <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p1" Token="0">
                         <checked>false</checked>
                     </first>
                     <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t1">
-                        <checked>false</checked>
-                    </second>
-                    <weight>1</weight>
-                </flux>
-                <flux>
-                    <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t3">
-                        <checked>false</checked>
-                    </first>
-                    <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p4" Token="0">
                         <checked>false</checked>
                     </second>
                     <weight>1</weight>
@@ -176,4 +176,48 @@
             </Flusso>
         </Rete>
     </Reti>
+    <Reti_di_Petri>
+        <Rete_di_Petri Name="provaPetri">
+            <Padri>
+                <Padre xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t1">
+                    <checked>false</checked>
+                </Padre>
+                <Padre xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t2">
+                    <checked>false</checked>
+                </Padre>
+                <Padre xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p1" Token="2">
+                    <checked>false</checked>
+                </Padre>
+            </Padri>
+            <Flusso>
+                <flux>
+                    <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p1" Token="2">
+                        <checked>false</checked>
+                    </first>
+                    <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t1">
+                        <checked>false</checked>
+                    </second>
+                    <weight>4</weight>
+                </flux>
+                <flux>
+                    <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t1">
+                        <checked>false</checked>
+                    </first>
+                    <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p1" Token="2">
+                        <checked>false</checked>
+                    </second>
+                    <weight>1</weight>
+                </flux>
+                <flux>
+                    <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p1" Token="2">
+                        <checked>false</checked>
+                    </first>
+                    <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t2">
+                        <checked>false</checked>
+                    </second>
+                    <weight>1</weight>
+                </flux>
+            </Flusso>
+        </Rete_di_Petri>
+    </Reti_di_Petri>
 </global>

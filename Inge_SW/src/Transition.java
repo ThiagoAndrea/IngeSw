@@ -11,10 +11,8 @@ public class Transition extends Father implements Serializable {
     @XmlTransient
     private String name;
 
-    private Boolean checked = false;
-
     @XmlTransient
-    private String time;
+    private Boolean checked = false;
 
     public Transition() {
     }
@@ -30,6 +28,7 @@ public class Transition extends Father implements Serializable {
         this.name = name;
     }
 
+    @XmlTransient
     @Override
     public Boolean getChecked() {
         return checked;
@@ -40,14 +39,6 @@ public class Transition extends Father implements Serializable {
         this.checked = checked;
     }
 
-    @XmlAttribute(name = "Time", required = false)
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
 
     /**
      * @param net          rete alla quale aggiungere la transizione che stiamo creando

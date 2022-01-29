@@ -8,7 +8,7 @@ public class Global {
 
     @XmlTransient
     private ArrayList<Net> netsSaved = new ArrayList<>();
-
+    @XmlTransient
     private ArrayList<Petri> PetriNetsSaved = new ArrayList<>();
 
     @XmlElementWrapper(name = "Reti")
@@ -17,6 +17,8 @@ public class Global {
         return netsSaved;
     }
 
+    @XmlElementWrapper(name = "Reti_di_Petri")
+    @XmlElement(name = "Rete_di_Petri")
     public ArrayList<Petri> getPetriNetsSaved() {
         return PetriNetsSaved;
     }

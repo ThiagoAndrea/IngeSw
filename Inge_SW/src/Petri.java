@@ -1,9 +1,11 @@
 import javax.lang.model.type.ArrayType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-
+@XmlAccessorType (XmlAccessType.FIELD)
 public class Petri extends Net {
 
 
