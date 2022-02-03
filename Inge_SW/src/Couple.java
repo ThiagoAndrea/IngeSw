@@ -1,3 +1,9 @@
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlElements;
+
+@XmlAccessorType
 public class Couple {
 
 
@@ -8,6 +14,10 @@ public class Couple {
     public Couple() {
     }
 
+    @XmlElements({
+            @XmlElement(name = "Transition", type = Transition.class),
+            @XmlElement(name = "Place", type = Place.class)
+    })
     public Father getFirst() {
         return first;
     }
@@ -16,6 +26,11 @@ public class Couple {
         this.first = first;
     }
 
+    @XmlElements({
+            @XmlElement(name = "Transition", type = Transition.class),
+            @XmlElement(name = "Place", type = Place.class)
+
+    })
     public Father getSecond() {
         return second;
     }
@@ -24,6 +39,7 @@ public class Couple {
         this.second = second;
     }
 
+    @XmlElement(name = "Weight")
     public int getWeight() {
         return weight;
     }

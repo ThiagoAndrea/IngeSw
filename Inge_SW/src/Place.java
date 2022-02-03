@@ -1,17 +1,14 @@
+import com.sun.xml.bind.annotation.OverrideAnnotationOf;
+
 import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-@XmlAccessorType(XmlAccessType.FIELD)
+@XmlAccessorType
 public class Place extends Father implements Serializable {
 
-    @XmlTransient
     private String name;
-
-    @XmlTransient
     private Boolean checked = false;
-
-    @XmlTransient
     private int token;
 
     @Override
@@ -25,7 +22,7 @@ public class Place extends Father implements Serializable {
         return checked;
     }
 
-    @XmlAttribute(name = "Name", required = true)
+    @XmlAttribute(name = "Name")
     @Override
     public String getName() {
         return name;
@@ -36,11 +33,13 @@ public class Place extends Father implements Serializable {
         this.name = name;
     }
 
-    @XmlAttribute(name = "Token", required = false)
+    @XmlAttribute(name = "Token")
+    @Override
     public int getToken() {
         return token;
     }
 
+    @Override
     public void setToken(int token) {
         this.token = token;
     }

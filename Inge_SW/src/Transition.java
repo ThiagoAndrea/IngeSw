@@ -5,22 +5,29 @@ import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-@XmlAccessorType(XmlAccessType.FIELD)
+@XmlAccessorType
 public class Transition extends Father implements Serializable {
 
-    @XmlTransient
     private String name;
-
-    @XmlTransient
     private Boolean checked = false;
 
     public Transition() {
     }
 
-    @XmlAttribute(name = "Name", required = true)
+    @XmlAttribute(name = "Name")
     @Override
     public String getName() {
         return name;
+    }
+
+    @XmlTransient
+    @Override
+    public int getToken() {
+        return 0;
+    }
+
+    @Override
+    public void setToken(int token) {
     }
 
     @Override
@@ -45,9 +52,7 @@ public class Transition extends Father implements Serializable {
      * @param placeCreated lista di posti collegati alla transizione
      */
     public void createPlacesForTrans(Net net, ArrayList<Place> placeCreated) {
-
         ArrayList<String> connections = new ArrayList<>();
-
         // questo ciclo continua a chiedere se vuole creare altri posti alla transizione scelta
         if (Utility.continueWriting(Utility.CONTINUE_PLACE + this.getName() + "? " + Utility.CHOICE)) {
             ArrayList<String> connections2 = new ArrayList<>();
@@ -79,17 +84,15 @@ public class Transition extends Father implements Serializable {
                 } else {
                     Couple c = new Couple(); //Creo la coppia posto-transizione da inserire nel flusso della rete
                     c.setFirst(this);
-                    c.setSecond(Utility.pickFather(net.getAllFather(),s));
+                    c.setSecond(Utility.pickFather(net.getAllFather(), s));
                     net.getFlux().add(c);
                     connections.add(s);
                 }
             }
-            if(Utility.nameNotUsedFatherList(net.getAllFather(), this.getName()))
-            net.getAllFather().add(this);
-
-            this.setChecked(true);
-
+            if (Utility.nameNotUsedFatherList(net.getAllFather(), this.getName()))
+                net.getAllFather().add(this);
         }
+        this.setChecked(true);
     }
 
 

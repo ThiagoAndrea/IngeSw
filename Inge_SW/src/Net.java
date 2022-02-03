@@ -6,20 +6,18 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-@XmlAccessorType(XmlAccessType.FIELD)
+@XmlAccessorType
 public class Net implements Serializable {
 
-    @XmlTransient
+
     private String name;
-
-    @XmlTransient
     private ArrayList<Father> allFather = new ArrayList<>();
-
-    @XmlTransient
     private HashSet<Couple> flux = new HashSet<>();
 
 
-    @XmlElementWrapper(name = "Flusso", required = true)
+
+  //  @XmlElementWrapper(name = "Flusso")
+    @XmlElement(name = "Flux")
     public HashSet<Couple> getFlux() {
         return flux;
     }
@@ -41,15 +39,17 @@ public class Net implements Serializable {
         this.allFather = allFather;
     }
 
-    @XmlElementWrapper(name = "Padri", required = true)
-    @XmlElement(name = "Padre", required = true)
+    @XmlElementWrapper(name = "Father")
+    @XmlElements({
+            @XmlElement(name = "Transition", type = Transition.class),
+            @XmlElement(name = "Place", type = Place.class)
+    })
     public ArrayList<Father> getAllFather() {
         return allFather;
     }
 
     public Net() {
     }
-
 
     public Net(String netName) {
 
@@ -87,7 +87,6 @@ public class Net implements Serializable {
             }
         }
     }
-
 
     public void printFlux() {
 

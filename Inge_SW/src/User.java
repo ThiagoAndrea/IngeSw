@@ -1,29 +1,44 @@
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamReader;
-import java.io.FileInputStream;
+import java.util.ArrayList;
 
 public class User {
 
-    XMLInputFactory xmlif = null;
-    XMLStreamReader xmlr = null;
 
-    public User(String file_Name) {
+    public User(){
 
-        initReader(file_Name);
-
-        //lettore user
     }
 
-    public void initReader(String nome_file) {
+    public Petri userChoosePetri(Global global){
+        global.printAllPetriNets();
+        return global.pickPetriNet(global.getPetriNetsSaved());
+    }
 
-        try {
-            xmlif = XMLInputFactory.newInstance();
-            xmlr = xmlif.createXMLStreamReader(new FileInputStream(nome_file));
-        } catch (Exception e) {
-            System.out.println("Errore nell'inizializzazione del reader:");
+    public void simulation(Petri petriNet){
+        ArrayList<Transition> enabled = petriNet.transitionsEnabled();
+        int size = enabled.size();
+        switch (size){
+            case 0:
+                System.out.println(Utility.ZERO_ENABLED);
+                break;
+
+            case 1:
+                if(Utility.readInt01(enabled.get(0).getName() + " " + Utility.ONE_ENABLED) == 1){
+                    petriNet.nextStep(enabled.get(0));
+                    petriNet.printPetriNet();
+                }
+                break;
+
+            default:
+                System.out.println(Utility.MORE_ENABLED);
+                int i=0;
+                for (Transition t: enabled) {
+                    System.out.println(i++ + " -> " + t.getName());
+                }
+                int chosen = Utility.readPositiveIntWithMax(Utility.CHOOSE_ENABLED, enabled.size()-1);
+                petriNet.nextStep(enabled.get(chosen));
+                petriNet.printPetriNet();
+                break;
         }
+
     }
 
-    //lettore sax per eventi
-    public void readXml(){}
 }

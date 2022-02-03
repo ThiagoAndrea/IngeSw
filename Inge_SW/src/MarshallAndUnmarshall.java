@@ -37,7 +37,7 @@ public class MarshallAndUnmarshall {
 
         System.out.println("-------------------------------------------------------------");
 
-        JAXBContext jaxbContext = JAXBContext.newInstance(Global.class, Net.class, Place.class, Transition.class);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Global.class);
         Marshaller marshaller = jaxbContext.createMarshaller();
 
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
@@ -61,14 +61,13 @@ public class MarshallAndUnmarshall {
         //SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         //Schema schema = schemaFactory.newSchema(new File());
 
-        JAXBContext jaxbContext = JAXBContext.newInstance(Global.class, Net.class, Father.class, Place.class, Transition.class);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Global.class);
 
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         //unmarshaller.getSchema(); // Restituisce lo schema che è stato utilizzato per fare l'unmarshalling
         //unmarshaller.setEventHandler(new NetValidationEventHandler());
 
         Global proofOfWork = (Global) unmarshaller.unmarshal(new File(xmlNet));
-        System.out.println("\t---\nUnmarshall eseguito\n\t---");
         // System.out.println(proofOfWork.toString());
     }
 
@@ -77,7 +76,7 @@ public class MarshallAndUnmarshall {
         //SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         //Schema schema = schemaFactory.newSchema(new File());
 
-        JAXBContext jaxbContext = JAXBContext.newInstance(Global.class, Net.class, Father.class, Place.class, Transition.class);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Global.class);
 
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         //unmarshaller.getSchema(); // Restituisce lo schema che è stato utilizzato per fare l'unmarshalling

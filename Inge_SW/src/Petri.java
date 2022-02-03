@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-@XmlAccessorType (XmlAccessType.FIELD)
+
+@XmlAccessorType
 public class Petri extends Net {
 
 
@@ -41,21 +42,78 @@ public class Petri extends Net {
         // Inserimento dei token
 
         ArrayList<Place> places = Utility.getPlacesFromFathers(this.getAllFather());
-        int j, number2=1, newToken;
-        while(number2!=0) {
+        int j, number2 = 1, newToken;
+        while (number2 != 0) {
             j = 1;
-            for(Place p : places){
+            for (Place p : places) {
                 System.out.println(j++ + ": " + p.getName() + " -> " + p.getToken());
             }
-                number2 = (Utility.readPositiveIntWithMax(Utility.CHOOSE_PLACE, places.size()));
+            number2 = (Utility.readPositiveIntWithMax(Utility.CHOOSE_PLACE, places.size()));
             if (number2 != 0) {
                 newToken = Utility.readPositiveIntNot0(Utility.INSERT_TOKEN);
-                places.get(number2-1).setToken(newToken);
+                places.get(number2 - 1).setToken(newToken);
             }
 
         }
     }
 
+    public void printFluxPetri() {
+        for (Couple c : this.getFlux()) {
+            System.out.println(c.toString() + ", peso: " + c.getWeight());
+        }
+    }
 
+    public void printPetriNet() {
+
+        ArrayList<String> print = new ArrayList<>();
+        String s = "Nome della rete di Petri: " + this.getName() + "\nLista di elementi:\n";
+        print.add(s);
+        for (Father f : this.getAllFather()) {
+            print.add((f.getClass().getName() + " " + f.getName()) + "  ");
+        }
+        String pl ="\nNumero di token per ogni posto:\n";
+        print.add(pl);
+        for (Place p : Utility.getPlacesFromFathers(this.getAllFather())) {
+            print.add(p.getName() + " -> " + p.getToken() + "\n");
+        }
+        String t = "\nFlusso della rete:\n";
+        print.add(t);
+        for (String st : print) {
+            System.out.print(st);
+        }
+        printFluxPetri();
+    }
+
+    public boolean isEnabled (Transition t1){
+        for (Couple c: this.getFlux()) {
+            if(c.getSecond().getName().equals(t1.getName())){
+                Place first = (Place) c.getFirst();
+                if(first.getToken() < c.getWeight())
+                    return false;
+            }
+        }
+        return true;
+    }
+
+    public ArrayList<Transition> transitionsEnabled (){
+        ArrayList<Transition> transitions = new ArrayList<>();
+        for(Transition t1 : Utility.getTransitionsFromFathers(this.getAllFather())){
+            if(isEnabled(t1))
+                transitions.add(t1);
+        }
+        return transitions;
+    }
+
+    public void nextStep(Transition t1){
+        for(Couple c : this.getFlux()){
+            if(c.getFirst().getName().equals(t1.getName())){
+                c.getSecond().setToken(c.getSecond().getToken() + c.getWeight());
+            }
+            if(c.getSecond().getName().equals(t1.getName())){
+                c.getFirst().setToken(c.getFirst().getToken() - c.getWeight());
+            }
+        }
+    }
 }
+
 

@@ -35,7 +35,11 @@ public class Utility {
     public static final String CHOOSE_COUPLE = "Digitare il numero della coppia della quale vuoi modificare il peso (premere 0 se hai finito le modifiche): ";
     public static final String CHOOSE_NET = "Inserire il numero della rete da modificare:\n";
     public static final String CHOOSE_PLACE = "Inserire il numero del posto di cui vuoi modificare il token (premere 0 se hai finito le modifiche):\n";
-
+    public static final String CONFIGURATOR_OR_USER = "Premere:\n0 -> se sei il configuratore\n1 -> se sei il fruitore\n";
+    public static final String ZERO_ENABLED = "Non ci sono transizioni abilitate, la simulazione è interrotta";
+    public static final String ONE_ENABLED = " è l'unica transizione abilitata. Vuoi procedere?\n1 -> sì\n0 -> no\n";
+    public static final String MORE_ENABLED = "Queste sono le transizioni abilitate:";
+    public static final String CHOOSE_ENABLED = "Digitare il numero corrispondente alla transizione che si vuole abilitare:\n";
 
 
     private static Scanner createScanner() {
@@ -110,7 +114,7 @@ public class Utility {
             System.out.println(message);
             try {
                 value = read.nextInt();
-                if (value >= 0 && value<= max)
+                if (value >= 0 && value <= max)
                     end = true;
                 else
                     System.out.println(ERROR_NUMBER);
@@ -123,13 +127,13 @@ public class Utility {
 
     }
 
-    public static ArrayList<String> readNames (String message){
+    public static ArrayList<String> readNames(String message) {
         ArrayList<String> list = new ArrayList<>();
-        Scanner read = new Scanner (System.in);
+        Scanner read = new Scanner(System.in);
         System.out.println(message);
         String line = read.nextLine();
         Scanner read2 = new Scanner(line);
-        while (read2.hasNext()){
+        while (read2.hasNext()) {
             String a = read2.next();
             list.add(a);
         }
@@ -184,23 +188,33 @@ public class Utility {
         return !ok;
     }
 
-    public static Father pickFather (ArrayList<Father> array, String name){
+    public static Father pickFather(ArrayList<Father> array, String name) {
 
-        for(Father f : array)
-        {
+        for (Father f : array) {
             if (f.getName().equals(name))
                 return f;
         }
         return null;
     }
 
-    public static ArrayList<Place> getPlacesFromFathers (ArrayList<Father> fathers){
+    public static ArrayList<Place> getPlacesFromFathers(ArrayList<Father> fathers) {
         ArrayList<Place> places = new ArrayList<>();
-        for(Father f : fathers){
-            if(f.getClass().getName().equals("Place")){
+        for (Father f : fathers) {
+            if (f.getClass().getName().equals("Place")) {
                 places.add((Place) f);
             }
         }
         return places;
     }
+
+    public static ArrayList<Transition> getTransitionsFromFathers(ArrayList<Father> fathers) {
+        ArrayList<Transition> trans = new ArrayList<>();
+        for (Father f : fathers) {
+            if (f.getClass().getName().equals("Transition")) {
+                trans.add((Transition) f);
+            }
+        }
+        return trans;
+    }
+
 }

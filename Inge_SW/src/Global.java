@@ -2,29 +2,24 @@ import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "Global")
 public class Global {
 
-    @XmlTransient
     private ArrayList<Net> netsSaved = new ArrayList<>();
-    @XmlTransient
-    private ArrayList<Petri> PetriNetsSaved = new ArrayList<>();
+    private ArrayList<Petri> petriNetsSaved = new ArrayList<>();
 
-    @XmlElementWrapper(name = "Reti")
     @XmlElement(name = "Rete")
     public ArrayList<Net> getNetsSaved() {
         return netsSaved;
     }
 
-    @XmlElementWrapper(name = "Reti_di_Petri")
     @XmlElement(name = "Rete_di_Petri")
     public ArrayList<Petri> getPetriNetsSaved() {
-        return PetriNetsSaved;
+        return petriNetsSaved;
     }
 
     public void setPetriNetsSaved(ArrayList<Petri> petriNetsSaved) {
-        PetriNetsSaved = petriNetsSaved;
+        petriNetsSaved = petriNetsSaved;
     }
 
     public void setNetsSaved(ArrayList<Net> netsSaved) {
@@ -109,9 +104,30 @@ public class Global {
         }
     }
 
+    public void printAllPetriNets(){
+        int a=1;
+        for (Petri p : this.petriNetsSaved){
+            System.out.println("<->-<->-<->-<->-<->");
+            System.out.println(a++);
+            p.printPetriNet();
+            System.out.println();
+        }
+
+    }
+
     public Net pickNet (ArrayList<Net> list ){
         int number;
+        do{
+            number = Utility.readInt(Utility.CHOOSE_NET);
+        }while (number < 0 || number > list.size());
 
+        number--;
+
+        return list.get(number);
+    }
+
+    public Petri pickPetriNet (ArrayList<Petri> list ){
+        int number;
         do{
             number = Utility.readInt(Utility.CHOOSE_NET);
         }while (number < 0 || number > list.size());
