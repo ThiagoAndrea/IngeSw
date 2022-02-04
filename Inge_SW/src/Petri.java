@@ -1,13 +1,11 @@
-import javax.lang.model.type.ArrayType;
-import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 
 @XmlAccessorType
-public class Petri extends Net {
+public class Petri extends Net implements Serializable {
 
 
     public Petri() {
@@ -71,7 +69,7 @@ public class Petri extends Net {
         for (Father f : this.getAllFather()) {
             print.add((f.getClass().getName() + " " + f.getName()) + "  ");
         }
-        String pl ="\nNumero di token per ogni posto:\n";
+        String pl = "\nNumero di token per ogni posto:\n";
         print.add(pl);
         for (Place p : Utility.getPlacesFromFathers(this.getAllFather())) {
             print.add(p.getName() + " -> " + p.getToken() + "\n");
@@ -84,32 +82,32 @@ public class Petri extends Net {
         printFluxPetri();
     }
 
-    public boolean isEnabled (Transition t1){
-        for (Couple c: this.getFlux()) {
-            if(c.getSecond().getName().equals(t1.getName())){
+    public boolean isEnabled(Transition t1) {
+        for (Couple c : this.getFlux()) {
+            if (c.getSecond().getName().equals(t1.getName())) {
                 Place first = (Place) c.getFirst();
-                if(first.getToken() < c.getWeight())
+                if (first.getToken() < c.getWeight())
                     return false;
             }
         }
         return true;
     }
 
-    public ArrayList<Transition> transitionsEnabled (){
+    public ArrayList<Transition> transitionsEnabled() {
         ArrayList<Transition> transitions = new ArrayList<>();
-        for(Transition t1 : Utility.getTransitionsFromFathers(this.getAllFather())){
-            if(isEnabled(t1))
+        for (Transition t1 : Utility.getTransitionsFromFathers(this.getAllFather())) {
+            if (isEnabled(t1))
                 transitions.add(t1);
         }
         return transitions;
     }
 
-    public void nextStep(Transition t1){
-        for(Couple c : this.getFlux()){
-            if(c.getFirst().getName().equals(t1.getName())){
+    public void nextStep(Transition t1) {
+        for (Couple c : this.getFlux()) {
+            if (c.getFirst().getName().equals(t1.getName())) {
                 c.getSecond().setToken(c.getSecond().getToken() + c.getWeight());
             }
-            if(c.getSecond().getName().equals(t1.getName())){
+            if (c.getSecond().getName().equals(t1.getName())) {
                 c.getFirst().setToken(c.getFirst().getToken() - c.getWeight());
             }
         }

@@ -2,7 +2,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 
-@XmlSeeAlso({Place.class,Transition.class,Couple.class})
+@XmlSeeAlso({Place.class, Transition.class, Couple.class})
 public abstract class Father implements Serializable {
 
 
@@ -21,5 +21,5 @@ public abstract class Father implements Serializable {
     @XmlTransient
     public abstract Boolean getChecked();
 
-    public abstract void setChecked (Boolean checked);
+    public abstract void setChecked(Boolean checked);
 }

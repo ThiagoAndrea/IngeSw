@@ -1,5 +1,3 @@
-import com.sun.xml.bind.annotation.OverrideAnnotationOf;
-
 import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.util.ArrayList;

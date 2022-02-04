@@ -1,8 +1,5 @@
-import jdk.jshell.execution.Util;
-
 import javax.xml.bind.annotation.*;
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -15,8 +12,7 @@ public class Net implements Serializable {
     private HashSet<Couple> flux = new HashSet<>();
 
 
-
-  //  @XmlElementWrapper(name = "Flusso")
+    //@XmlElementWrapper(name = "Flusso")
     @XmlElement(name = "Flux")
     public HashSet<Couple> getFlux() {
         return flux;
@@ -111,15 +107,15 @@ public class Net implements Serializable {
             }
         }
 
-        for (Couple c : cl.getFlux()){
+        for (Couple c : cl.getFlux()) {
             Couple clonedCouple = new Couple();
-            for (Father f : cloned.getAllFather()){
-                if(f.getName().equals(c.getFirst().getName())){
+            for (Father f : cloned.getAllFather()) {
+                if (f.getName().equals(c.getFirst().getName())) {
                     clonedCouple.setFirst(f);
                 }
             }
-            for (Father f : cloned.getAllFather()){
-                if(f.getName().equals(c.getSecond().getName())){
+            for (Father f : cloned.getAllFather()) {
+                if (f.getName().equals(c.getSecond().getName())) {
                     clonedCouple.setSecond(f);
                 }
             }

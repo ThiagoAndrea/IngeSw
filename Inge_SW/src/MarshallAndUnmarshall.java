@@ -1,14 +1,9 @@
 import org.xml.sax.SAXException;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
+import javax.xml.bind.*;
 import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamReader;
 import java.io.File;
-import java.io.FileInputStream;
 
 public class MarshallAndUnmarshall {
 
@@ -36,20 +31,23 @@ public class MarshallAndUnmarshall {
         unmarshall();
 
         System.out.println("-------------------------------------------------------------");
+        try {
+            JAXBContext jaxbContext = JAXBContext.newInstance(Global.class);
+            Marshaller marshaller = jaxbContext.createMarshaller();
 
-        JAXBContext jaxbContext = JAXBContext.newInstance(Global.class);
-        Marshaller marshaller = jaxbContext.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+            //marshaller.setProperty(Marshaller.JAXB_NO_NAMESPACE_SCHEMA_LOCATION, Boolean.FALSE);
 
-        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-        //marshaller.setProperty(Marshaller.JAXB_NO_NAMESPACE_SCHEMA_LOCATION, Boolean.FALSE);
+            //marshaller.setSchema(schema);
 
-        //marshaller.setSchema(schema);
+            //marshaller.setEventHandler(new NetValidationEventHandler());
 
-        //marshaller.setEventHandler(new NetValidationEventHandler());
-
-        marshaller.marshal(global, new File(xmlNet));
-        marshaller.marshal(global, System.out);
-
+            marshaller.marshal(global, new File(xmlNet));
+            marshaller.marshal(global, System.out);
+        } catch (JAXBException e) {
+            //da fare
+            e.printStackTrace();
+        }
         System.out.println("-------------------------------------------------------------");
     }
 
@@ -88,33 +86,4 @@ public class MarshallAndUnmarshall {
         return proofOfWork;
     }
 
-    public void initReader() {
-
-        try {
-            xmlif = XMLInputFactory.newInstance();
-            xmlr = xmlif.createXMLStreamReader(new FileInputStream(xmlNet));
-        } catch (Exception e) {
-            System.out.println("Errore nell'inizializzazione del reader:");
-        }
-    }
-/*
-    public void readXml() {
-        try {
-            while (xmlr.hasNext()) {
-                if (xmlr.getEventType() == XMLStreamConstants.START_ELEMENT) {
-
-                    for (int i = 0; i < xmlr.getAttributeCount(); i++) {
-                        //da vedere con andrea
-                    }
-                } else if ()
-
-            }
-            xmlr.next();
-
-        } catch (Exception e) {
-            System.out.println("Errore nella lettura");
-        }
-    }
-
-*/
 }
