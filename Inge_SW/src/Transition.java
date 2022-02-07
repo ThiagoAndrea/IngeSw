@@ -1,19 +1,22 @@
+import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-@XmlAccessorType
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Transition extends Father implements Serializable {
 
+    @XmlTransient
     private String name;
+    @XmlTransient
     private Boolean checked = false;
 
     public Transition() {
     }
 
-    @XmlAttribute(name = "Name")
+    @XmlAttribute(name = "Name", required = true)
     @Override
     public String getName() {
         return name;

@@ -3,20 +3,25 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-@XmlRootElement(name = "Global")
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Global implements Serializable {
 
+    @XmlTransient
     private ArrayList<Net> netsSaved = new ArrayList<>();
+    @XmlTransient
     private ArrayList<Petri> petriNetsSaved = new ArrayList<>();
 
     public Global() {
     }
 
+    @XmlElementWrapper(name = "Reti")
     @XmlElement(name = "Rete")
     public ArrayList<Net> getNetsSaved() {
         return netsSaved;
     }
 
+    @XmlElementWrapper(name = "Reti_di_Petri")
     @XmlElement(name = "Rete_di_Petri")
     public ArrayList<Petri> getPetriNetsSaved() {
         return petriNetsSaved;

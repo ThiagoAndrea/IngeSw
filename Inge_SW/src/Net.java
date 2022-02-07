@@ -3,17 +3,18 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-@XmlAccessorType
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Net implements Serializable {
 
-
+    @XmlTransient
     private String name;
+    @XmlTransient
     private ArrayList<Father> allFather = new ArrayList<>();
+    @XmlTransient
     private HashSet<Couple> flux = new HashSet<>();
 
 
-    //@XmlElementWrapper(name = "Flusso")
-    @XmlElement(name = "Flux")
+    @XmlElementWrapper(name = "Flusso", required = true)
     public HashSet<Couple> getFlux() {
         return flux;
     }
@@ -35,11 +36,8 @@ public class Net implements Serializable {
         this.allFather = allFather;
     }
 
-    @XmlElementWrapper(name = "Father")
-    @XmlElements({
-            @XmlElement(name = "Transition", type = Transition.class),
-            @XmlElement(name = "Place", type = Place.class)
-    })
+    @XmlElementWrapper(name = "Padri", required = true)
+    @XmlElement(name = "Padre", required = true)
     public ArrayList<Father> getAllFather() {
         return allFather;
     }

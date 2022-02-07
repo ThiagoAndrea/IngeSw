@@ -1,10 +1,5 @@
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElements;
-import java.io.Serializable;
 
-@XmlAccessorType
-public class Couple implements Serializable {
+public class Couple{
 
 
     private Father first;
@@ -14,10 +9,6 @@ public class Couple implements Serializable {
     public Couple() {
     }
 
-    @XmlElements({
-            @XmlElement(name = "Transition", type = Transition.class),
-            @XmlElement(name = "Place", type = Place.class)
-    })
     public Father getFirst() {
         return first;
     }
@@ -26,11 +17,6 @@ public class Couple implements Serializable {
         this.first = first;
     }
 
-    @XmlElements({
-            @XmlElement(name = "Transition", type = Transition.class),
-            @XmlElement(name = "Place", type = Place.class)
-
-    })
     public Father getSecond() {
         return second;
     }
@@ -39,7 +25,6 @@ public class Couple implements Serializable {
         this.second = second;
     }
 
-    @XmlElement(name = "Weight")
     public int getWeight() {
         return weight;
     }
