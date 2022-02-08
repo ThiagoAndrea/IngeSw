@@ -18,9 +18,17 @@ public class Main {
         } else {
             User user = new User();
             int nextSimulation = 1;
-            Petri chosen = user.userChoosePetri(global);
-            while (nextSimulation == 1)
-                nextSimulation = user.simulation(chosen);
+            if(Utility.readInt01(Utility.PETRI_OR_PRIORITY) == 1) {
+                Petri chosen = user.userChoosePetri(global);
+                while (nextSimulation == 1)
+                    nextSimulation = user.simulationPetri(chosen);
+            }
+            else {
+                Priority chosen = user.userChoosePriority(global);
+                while (nextSimulation == 1)
+                    nextSimulation = user.simulationPriority(chosen);
+
+            }
         }
     }
 

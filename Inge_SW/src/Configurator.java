@@ -41,9 +41,19 @@ public class Configurator {
                             util.marshall(global);
                         }
                     }
-
                     break;
 
+                case 4:
+                    global.printAllPetriNets();
+                    Petri petriPicked = global.pickPetriNet(global.getPetriNetsSaved());
+                    Priority pr = new Priority(petriPicked);
+                    if(Utility.readInt01(Utility.SAVING) == 1){
+                        if(global.confirmPriorityNet(global.getPriorityNetsSaved(), pr)){
+                            global.getPriorityNetsSaved().add(pr);
+                            util.marshall(global);
+                        }
+                    }
+                    break;
                 default:
                     break;
             }

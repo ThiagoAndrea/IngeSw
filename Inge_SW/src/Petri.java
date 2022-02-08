@@ -50,7 +50,6 @@ public class Petri extends Net implements Serializable {
                 newToken = Utility.readPositiveIntNot0(Utility.INSERT_TOKEN);
                 places.get(number2 - 1).setToken(newToken);
             }
-
         }
     }
 
@@ -110,6 +109,42 @@ public class Petri extends Net implements Serializable {
                 c.getFirst().setToken(c.getFirst().getToken() - c.getWeight());
             }
         }
+    }
+
+    public Petri clone(Petri petri) {
+        Petri cloned = new Petri();
+
+        for (Father f : petri.getAllFather()) {
+            if (f.getClass().getName().equals("Transition")) {
+                Transition clonedTrans = new Transition();
+                clonedTrans.setName(f.getName());
+                cloned.getAllFather().add(clonedTrans);
+            } else {
+                Place clonedPlace = new Place();
+                clonedPlace.setName(f.getName());
+                clonedPlace.setToken(f.getToken());
+                cloned.getAllFather().add(clonedPlace);
+            }
+        }
+
+        for (Couple c : petri.getFlux()) {
+            Couple clonedCouple = new Couple();
+            for (Father f : cloned.getAllFather()) {
+                if (f.getName().equals(c.getFirst().getName())) {
+                    clonedCouple.setFirst(f);
+                    clonedCouple.setWeight(c.getWeight());
+                }
+            }
+            for (Father f : cloned.getAllFather()) {
+                if (f.getName().equals(c.getSecond().getName())) {
+                    clonedCouple.setSecond(f);
+                    clonedCouple.setWeight(c.getWeight());
+                }
+            }
+            cloned.getFlux().add(clonedCouple);
+        }
+
+        return cloned;
     }
 }
 

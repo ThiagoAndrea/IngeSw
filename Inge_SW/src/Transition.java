@@ -12,6 +12,8 @@ public class Transition extends Father implements Serializable {
     private String name;
     @XmlTransient
     private Boolean checked = false;
+    @XmlTransient
+    private int priority = 1;
 
     public Transition() {
     }
@@ -48,6 +50,16 @@ public class Transition extends Father implements Serializable {
         this.checked = checked;
     }
 
+    @XmlAttribute(name = "Priority", required = true)
+    @Override
+    public int getPriority() {
+        return priority;
+    }
+
+    @Override
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
 
     /**
      * @param net          rete alla quale aggiungere la transizione che stiamo creando

@@ -14,6 +14,10 @@ public abstract class Father implements Serializable {
 
     public abstract void setToken(int token);
 
+    public abstract int getPriority();
+
+    public abstract void setPriority(int priortiy);
+
     public abstract void setName(String name);
 
     public abstract Boolean getChecked();

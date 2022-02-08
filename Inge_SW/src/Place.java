@@ -45,6 +45,16 @@ public class Place extends Father implements Serializable {
         this.token = token;
     }
 
+    @Override
+    public int getPriority() {
+        return 0;
+    }
+
+    @Override
+    public void setPriority(int priortiy) {
+
+    }
+
     public Place() {
     }
 

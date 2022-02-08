@@ -27,19 +27,24 @@ public class Utility {
     public static final String WELCOME = "Benvenuto nella creazione di una rete, premere:\n0 -> per iniziare da una transizione\n1 -> per iniziare da un posto\n";
     public static final String NET_NAME = "Inserisci un nome da assegnare alla tua rete:\n";
     public static final String PETRI_NET_NAME = "Inserisci un nome da assegnare alla tua rete di Petri:\n";
+    public static final String PRIORITY_NET_NAME = "Inserisci un nome da assegnare alla tua rete di Petri con priorità:\n";
     public static final String BACK = "\nInserire 0 per terminare.";
-    public static final String MENU = "\n\nPremere:\n0 -> per terminare il programma\n1 -> per visualizzare le reti salvare\n2 -> per creare una nuova rete\n3 -> per trasformare una rete salvata in una rete di Petri";
+    public static final String MENU = "\n\nPremere:\n1 -> per visualizzare le reti salvate\n2 -> per creare una nuova rete\n3 -> per trasformare una rete salvata in una rete di Petri\n4 -> per trasformare una rete di Petri in una rete di Petri con priorità\n\n0 -> per terminare il programma";
     public static final String INSERT_WEIGHT = "Inserire il valore del nuovo peso: ";
     public static final String INSERT_TOKEN = "Inserire il valore del token: ";
+    public static final String INSERT_PRIORITY = "Inserire il valore dela priorità: ";
     public static final String CHOOSE_COUPLE = "Digitare il numero della coppia della quale vuoi modificare il peso (premere 0 se hai finito le modifiche): ";
     public static final String CHOOSE_NET = "Inserire il numero della rete da modificare:\n";
     public static final String CHOOSE_PLACE = "Inserire il numero del posto di cui vuoi modificare il token (premere 0 se hai finito le modifiche):\n";
+    public static final String CHOOSE_TRANSITION= "Inserire il numero della transizione di cui vuoi modificare la priorità (premere 0 se hai finito le modifiche):\n";
     public static final String CONFIGURATOR_OR_USER = "Premere:\n0 -> se sei il configuratore\n1 -> se sei il fruitore\n";
     public static final String ZERO_ENABLED = "Non ci sono transizioni abilitate, la simulazione è interrotta.";
     public static final String ONE_ENABLED = " è l'unica transizione abilitata. Vuoi procedere?\n1 -> sì\n0 -> no\n";
     public static final String MORE_ENABLED = "Queste sono le transizioni abilitate:";
+    public static final String MORE_ENABLED_WITH_PRIORITY = "Ci sono più transizioni abilitate, ma considerando la priorità, quelle abilitate sono: ";
     public static final String CHOOSE_ENABLED = "Digitare il numero corrispondente alla transizione che si vuole abilitare:\n";
     public static final String CONTINUE_SIMULATION = "Vuoi procedere con la simulazione? Premere:\n1 -> si\n0 -> no";
+    public static final String PETRI_OR_PRIORITY = "Premere:\n1 -> Se vuoi simulare una rete di Petri\n0 -> Se vuoi simulare una rete di Petri con priorità";
 
 
     private static Scanner createScanner() {
@@ -115,6 +120,27 @@ public class Utility {
             try {
                 value = read.nextInt();
                 if (value >= 0 && value <= max)
+                    end = true;
+                else
+                    System.out.println(ERROR_NUMBER);
+            } catch (InputMismatchException e) {
+                System.out.println(ERROR_FORMAT);
+                String trash = read.next();
+            }
+        } while ((!end));
+        return value;
+
+    }
+
+    public static int readPositiveIntnot0WithMax(String message, int max) {
+        boolean end = false;
+        int value = 0;
+        Scanner read = new Scanner(System.in);
+        do {
+            System.out.println(message);
+            try {
+                value = read.nextInt();
+                if (value > 0 && value <= max)
                     end = true;
                 else
                     System.out.println(ERROR_NUMBER);

@@ -12,6 +12,8 @@ public class Global implements Serializable {
     private ArrayList<Net> netsSaved = new ArrayList<>();
     @XmlTransient
     private ArrayList<Petri> petriNetsSaved = new ArrayList<>();
+    @XmlTransient
+    private ArrayList<Priority> priorityNetsSaved = new ArrayList<>();
 
     public Global() {
     }
@@ -26,6 +28,16 @@ public class Global implements Serializable {
     @XmlElement(name = "Rete_di_Petri")
     public ArrayList<Petri> getPetriNetsSaved() {
         return petriNetsSaved;
+    }
+
+    @XmlElementWrapper(name = "Reti_di_Petri_con_priorità")
+    @XmlElement(name = "Rete_di_Petri_con_priorità")
+    public ArrayList<Priority> getPriorityNetsSaved() {
+        return priorityNetsSaved;
+    }
+
+    public void setPriorityNetsSaved(ArrayList<Priority> priorityNetsSaved) {
+        this.priorityNetsSaved = priorityNetsSaved;
     }
 
     public void setPetriNetsSaved(ArrayList<Petri> petriNetsSaved) {
@@ -88,6 +100,19 @@ public class Global implements Serializable {
         return true;
     }
 
+    public boolean sameTransitionPriority(ArrayList<Transition> array1, ArrayList<Transition> array2) {
+        for (Transition t1 : array1) {
+            for (Transition t2 : array2) {
+                if (Objects.equals(t1.getName(), t2.getName())) {
+                    if (t1.getPriority() != t2.getPriority()) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
     public boolean confirmNet(ArrayList<Net> allNets, Net net) {
         for (Net n : allNets) {
             if (sameFlux(n.getFlux(), net.getFlux()))
@@ -100,6 +125,16 @@ public class Global implements Serializable {
         for (Petri p : allPetri) {
             if (sameFlux(p.getFlux(), singlePetri.getFlux()) &&
                     samePlacesToken(Utility.getPlacesFromFathers(p.getAllFather()), Utility.getPlacesFromFathers(singlePetri.getAllFather())))
+                return false;
+        }
+        return true;
+    }
+
+    public boolean confirmPriorityNet(ArrayList<Priority> allPriority, Priority priority) {
+        for (Priority p : allPriority) {
+            if (sameFlux(p.getFlux(), priority.getFlux()) &&
+                    samePlacesToken(Utility.getPlacesFromFathers(p.getAllFather()), Utility.getPlacesFromFathers(priority.getAllFather())) &&
+                            sameTransitionPriority(Utility.getTransitionsFromFathers(p.getAllFather()), Utility.getTransitionsFromFathers(priority.getAllFather())))
                 return false;
         }
         return true;
@@ -126,6 +161,16 @@ public class Global implements Serializable {
 
     }
 
+    public void printAllPriorityNets() {
+        int a = 1;
+        for (Priority p : this.priorityNetsSaved) {
+            System.out.println("<->-<->-<->-<->-<->");
+            System.out.println(a++);
+            p.printPriorityNet();
+            System.out.println();
+        }
+    }
+
     public Net pickNet(ArrayList<Net> list) {
         int number;
         do {
@@ -138,6 +183,17 @@ public class Global implements Serializable {
     }
 
     public Petri pickPetriNet(ArrayList<Petri> list) {
+        int number;
+        do {
+            number = Utility.readInt(Utility.CHOOSE_NET);
+        } while (number <= 0 || number > list.size());
+
+        number--;
+
+        return list.get(number);
+    }
+
+    public Priority pickPriorityNet(ArrayList<Priority> list) {
         int number;
         do {
             number = Utility.readInt(Utility.CHOOSE_NET);
@@ -178,6 +234,21 @@ public class Global implements Serializable {
                 }
             }
         }
+        for(Priority pr : this.getPriorityNetsSaved()){
+            for (Couple c : pr.getFlux()){
+                for (Father f : pr.getAllFather()){
+                    if(f.getName().equals(c.getFirst().getName())){
+                        c.setFirst(f);
+                    }
+                }
+                for (Father f : pr.getAllFather()){
+                    if(f.getName().equals(c.getSecond().getName())){
+                        c.setSecond(f);
+                    }
+                }
+            }
+        }
 
         }
+
 }
