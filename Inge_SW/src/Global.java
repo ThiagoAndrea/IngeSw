@@ -141,7 +141,7 @@ public class Global implements Serializable {
         int number;
         do {
             number = Utility.readInt(Utility.CHOOSE_NET);
-        } while (number < 0 || number > list.size());
+        } while (number <= 0 || number > list.size());
 
         number--;
 

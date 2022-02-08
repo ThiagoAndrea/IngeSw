@@ -13,7 +13,6 @@ public class MarshallAndUnmarshall {
     private final String xmlNet = "Savings.xml";
     private final String xmlProva = "TEST1_CONVERSIONE.xml";
 
-    //Xml Schema da provare
     private final String xsdNet = "savings.xsd";
 
     XMLInputFactory xmlif = null;

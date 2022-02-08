@@ -28,7 +28,6 @@ public class Utility {
     public static final String NET_NAME = "Inserisci un nome da assegnare alla tua rete:\n";
     public static final String PETRI_NET_NAME = "Inserisci un nome da assegnare alla tua rete di Petri:\n";
     public static final String BACK = "\nInserire 0 per terminare.";
-    public static final String START = "-\n--\n--- BENVENUTO ---\n--\n-\n\n";
     public static final String MENU = "\n\nPremere:\n0 -> per terminare il programma\n1 -> per visualizzare le reti salvare\n2 -> per creare una nuova rete\n3 -> per trasformare una rete salvata in una rete di Petri";
     public static final String INSERT_WEIGHT = "Inserire il valore del nuovo peso: ";
     public static final String INSERT_TOKEN = "Inserire il valore del token: ";

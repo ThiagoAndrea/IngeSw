@@ -63,12 +63,12 @@ public class Petri extends Net implements Serializable {
     public void printPetriNet() {
 
         ArrayList<String> print = new ArrayList<>();
-        String s = "Nome della rete di Petri: " + this.getName() + "\nLista di elementi:\n";
+        String s = "Nome della rete di Petri: " + this.getName() + "\n\nLista di elementi:\n";
         print.add(s);
         for (Father f : this.getAllFather()) {
             print.add((f.getClass().getName() + " " + f.getName()) + "  ");
         }
-        String pl = "\nNumero di token per ogni posto:\n";
+        String pl = "\n\nNumero di token per ogni posto:\n";
         print.add(pl);
         for (Place p : Utility.getPlacesFromFathers(this.getAllFather())) {
             print.add(p.getName() + " -> " + p.getToken() + "\n");

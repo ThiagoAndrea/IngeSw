@@ -10,7 +10,6 @@ public class Configurator {
 
     public void menu(Global global, Net net, MarshallAndUnmarshall util) throws JAXBException, SAXException {
 
-        System.out.println(Utility.START);
         int start;
         do {
             start = Utility.readInt(Utility.MENU);
