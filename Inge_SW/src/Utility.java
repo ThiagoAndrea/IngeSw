@@ -36,10 +36,11 @@ public class Utility {
     public static final String CHOOSE_NET = "Inserire il numero della rete da modificare:\n";
     public static final String CHOOSE_PLACE = "Inserire il numero del posto di cui vuoi modificare il token (premere 0 se hai finito le modifiche):\n";
     public static final String CONFIGURATOR_OR_USER = "Premere:\n0 -> se sei il configuratore\n1 -> se sei il fruitore\n";
-    public static final String ZERO_ENABLED = "Non ci sono transizioni abilitate, la simulazione è interrotta";
+    public static final String ZERO_ENABLED = "Non ci sono transizioni abilitate, la simulazione è interrotta.";
     public static final String ONE_ENABLED = " è l'unica transizione abilitata. Vuoi procedere?\n1 -> sì\n0 -> no\n";
     public static final String MORE_ENABLED = "Queste sono le transizioni abilitate:";
     public static final String CHOOSE_ENABLED = "Digitare il numero corrispondente alla transizione che si vuole abilitare:\n";
+    public static final String CONTINUE_SIMULATION = "Vuoi procedere con la simulazione? Premere:\n1 -> si\n0 -> no";
 
 
     private static Scanner createScanner() {

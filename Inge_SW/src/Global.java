@@ -2,6 +2,7 @@ import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Objects;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -77,7 +78,7 @@ public class Global implements Serializable {
     public boolean samePlacesToken(ArrayList<Place> array1, ArrayList<Place> array2) {
         for (Place p1 : array1) {
             for (Place p2 : array2) {
-                if (p1.getName() == p2.getName()) {
+                if (Objects.equals(p1.getName(), p2.getName())) {
                     if (p1.getToken() != p2.getToken()) {
                         return false;
                     }
@@ -146,4 +147,37 @@ public class Global implements Serializable {
 
         return list.get(number);
     }
+
+    public void sameObject(){
+
+        for (Net n : this.getNetsSaved()){
+            for (Couple c : n.getFlux()){
+                for (Father f : n.getAllFather()){
+                    if(f.getName().equals(c.getFirst().getName())){
+                        c.setFirst(f);
+                    }
+                }
+                for (Father f : n.getAllFather()){
+                    if(f.getName().equals(c.getSecond().getName())){
+                        c.setSecond(f);
+                    }
+                }
+            }
+        }
+        for(Petri p : this.getPetriNetsSaved()){
+            for (Couple c : p.getFlux()){
+                for (Father f : p.getAllFather()){
+                    if(f.getName().equals(c.getFirst().getName())){
+                        c.setFirst(f);
+                    }
+                }
+                for (Father f : p.getAllFather()){
+                    if(f.getName().equals(c.getSecond().getName())){
+                        c.setSecond(f);
+                    }
+                }
+            }
+        }
+
+        }
 }

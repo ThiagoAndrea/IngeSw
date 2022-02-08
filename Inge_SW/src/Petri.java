@@ -10,8 +10,6 @@ public class Petri extends Net implements Serializable {
 
 
     public Petri() {
-        //Chiedi all'utente quali pesi inserire nel flusso
-        //
     }
 
     public Petri(Net fatherNet) {
