@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<global>
+        <Reti_di_Petri>
+            <Rete_di_Petri Name="prova petri">
+                <Padri>
+                    <Padre xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t1" Priority="1">
+                        <checked>false</checked>
+                        <token>0</token>
+                    </Padre>
+                    <Padre xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t2" Priority="1">
+                        <checked>false</checked>
+                        <token>0</token>
+                    </Padre>
+                    <Padre xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p1" Token="2">
+                        <checked>false</checked>
+                        <priority>0</priority>
+                    </Padre>
+                    <Padre xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p2" Token="0">
+                        <checked>false</checked>
+                        <priority>0</priority>
+                    </Padre>
+                </Padri>
+                <Flusso>
+                    <flux>
+                        <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t1" Priority="1">
+                            <checked>false</checked>
+                            <token>0</token>
+                        </first>
+                        <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p2" Token="0">
+                            <checked>false</checked>
+                            <priority>0</priority>
+                        </second>
+                        <weight>1</weight>
+                    </flux>
+                    <flux>
+                        <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p1" Token="2">
+                            <checked>false</checked>
+                            <priority>0</priority>
+                        </first>
+                        <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t1" Priority="1">
+                            <checked>false</checked>
+                            <token>0</token>
+                        </second>
+                        <weight>2</weight>
+                    </flux>
+                    <flux>
+                        <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p1" Token="2">
+                            <checked>false</checked>
+                            <priority>0</priority>
+                        </first>
+                        <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t2" Priority="1">
+                            <checked>false</checked>
+                            <token>0</token>
+                        </second>
+                        <weight>1</weight>
+                    </flux>
+                    <flux>
+                        <first xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="transition" Name="t2" Priority="1">
+                            <checked>false</checked>
+                            <token>0</token>
+                        </first>
+                        <second xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="place" Name="p2" Token="0">
+                            <checked>false</checked>
+                            <priority>0</priority>
+                        </second>
+                        <weight>1</weight>
+                    </flux>
+                </Flusso>
+            </Rete_di_Petri>
+        </Reti_di_Petri>
+</global>

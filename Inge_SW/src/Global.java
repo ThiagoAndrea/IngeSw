@@ -251,4 +251,9 @@ public class Global implements Serializable {
 
         }
 
+        public Net getTopology(Petri petri){
+            Net n = petri.cloneNetFromPetri();
+            return n;
+        }
+
 }

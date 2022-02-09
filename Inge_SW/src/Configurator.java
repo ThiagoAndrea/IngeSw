@@ -1,3 +1,4 @@
+import jdk.jshell.execution.Util;
 import org.xml.sax.SAXException;
 
 import javax.xml.bind.JAXBException;
@@ -54,6 +55,18 @@ public class Configurator {
                         }
                     }
                     break;
+
+                case 5:
+                    ImportFile file = new ImportFile();
+                    int filechosen = 0;
+                    String nameFile = "";
+                        file.acceptFile(global);
+
+
+                    //unmarshall
+                    //conferma esito
+                    break;
+
                 default:
                     break;
             }

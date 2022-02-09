@@ -50,7 +50,7 @@ public class Transition extends Father implements Serializable {
         this.checked = checked;
     }
 
-    @XmlAttribute(name = "Priority", required = true)
+    @XmlAttribute(name = "Priority")
     @Override
     public int getPriority() {
         return priority;

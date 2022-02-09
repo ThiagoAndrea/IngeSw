@@ -9,10 +9,8 @@ public class MarshallAndUnmarshall {
 
     public MarshallAndUnmarshall() {
     }
-
     private final String xmlNet = "Savings.xml";
     private final String xmlProva = "TEST1_CONVERSIONE.xml";
-
     private final String xsdNet = "savings.xsd";
 
     XMLInputFactory xmlif = null;
@@ -55,32 +53,16 @@ public class MarshallAndUnmarshall {
      */
     public void unmarshall() throws JAXBException {
 
-        //SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-        //Schema schema = schemaFactory.newSchema(new File());
-
         JAXBContext jaxbContext = JAXBContext.newInstance(Global.class, Petri.class, Net.class, Place.class, Transition.class);
-
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-        //unmarshaller.getSchema(); // Restituisce lo schema che è stato utilizzato per fare l'unmarshalling
-        //unmarshaller.setEventHandler(new NetValidationEventHandler());
-
         Global proofOfWork = (Global) unmarshaller.unmarshal(new File(xmlNet));
-        // System.out.println(proofOfWork.toString());
     }
 
-    public Global unmarshallReturn() throws JAXBException {
-
-        //SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-        //Schema schema = schemaFactory.newSchema(new File());
+    public Global unmarshallReturn(String fileName) throws JAXBException {
 
         JAXBContext jaxbContext = JAXBContext.newInstance(Global.class, Petri.class, Net.class, Place.class, Transition.class);
-
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-        //unmarshaller.getSchema(); // Restituisce lo schema che è stato utilizzato per fare l'unmarshalling
-        //unmarshaller.setEventHandler(new NetValidationEventHandler());
-
-        Global proofOfWork = (Global) unmarshaller.unmarshal(new File(xmlNet));
-        //System.out.println(proofOfWork.toString());
+        Global proofOfWork = (Global) unmarshaller.unmarshal(new File(fileName));
         return proofOfWork;
     }
 

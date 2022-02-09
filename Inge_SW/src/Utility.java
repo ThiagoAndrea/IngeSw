@@ -29,7 +29,7 @@ public class Utility {
     public static final String PETRI_NET_NAME = "Inserisci un nome da assegnare alla tua rete di Petri:\n";
     public static final String PRIORITY_NET_NAME = "Inserisci un nome da assegnare alla tua rete di Petri con priorità:\n";
     public static final String BACK = "\nInserire 0 per terminare.";
-    public static final String MENU = "\n\nPremere:\n1 -> per visualizzare le reti salvate\n2 -> per creare una nuova rete\n3 -> per trasformare una rete salvata in una rete di Petri\n4 -> per trasformare una rete di Petri in una rete di Petri con priorità\n\n0 -> per terminare il programma";
+    public static final String MENU = "\n\nPremere:\n1 -> per visualizzare le reti salvate\n2 -> per creare una nuova rete\n3 -> per trasformare una rete salvata in una rete di Petri\n4 -> per trasformare una rete di Petri in una rete di Petri con priorità\n5 -> per importare una rete da file esterno seguendo il manuale d'istruzioni allegato\n\n0 -> per terminare il programma";
     public static final String INSERT_WEIGHT = "Inserire il valore del nuovo peso: ";
     public static final String INSERT_TOKEN = "Inserire il valore del token: ";
     public static final String INSERT_PRIORITY = "Inserire il valore dela priorità: ";
@@ -45,6 +45,12 @@ public class Utility {
     public static final String CHOOSE_ENABLED = "Digitare il numero corrispondente alla transizione che si vuole abilitare:\n";
     public static final String CONTINUE_SIMULATION = "Vuoi procedere con la simulazione? Premere:\n1 -> si\n0 -> no";
     public static final String PETRI_OR_PRIORITY = "Premere:\n1 -> Se vuoi simulare una rete di Petri\n0 -> Se vuoi simulare una rete di Petri con priorità";
+    public static final String GET_NET_FROM_FILE = "Premere:\n0 -> Se vuoi importare una rete\n1 -> Se vuoi importare una rete di Petri\n2 -> Se vuoi importare una rete di Petri con priorità";
+    public static final String INSERT_FILE = "Inserisci il nome del file, ricordati di inserire '.xml''";
+    public static final String WRONG_NET_TOPOLOGY = "La topologia di rete non è già presente in global";
+    public static final String WRONG_PETRI_TOPOLOGY = "La topologia di rete di petri non è già presente in global";
+    public static final String NET_ALREADY_USED = "La rete è già presente.";
+    public static final String ERROR_NAME_FILE = "Il nome del file non è stato inserito correttamente";
 
 
     private static Scanner createScanner() {

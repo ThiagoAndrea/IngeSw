@@ -111,6 +111,41 @@ public class Petri extends Net implements Serializable {
         }
     }
 
+    public Net cloneNetFromPetri(){
+        Net cloned = new Net();
+        for (Father f : this.getAllFather()) {
+            if (f.getClass().getName().equals("Transition")) {
+                Transition clonedTrans = new Transition();
+                clonedTrans.setName(f.getName());
+                cloned.getAllFather().add(clonedTrans);
+            } else {
+                Place clonedPlace = new Place();
+                clonedPlace.setName(f.getName());
+                clonedPlace.setToken(0);
+                cloned.getAllFather().add(clonedPlace);
+            }
+        }
+
+        for (Couple c : this.getFlux()) {
+            Couple clonedCouple = new Couple();
+            for (Father f : cloned.getAllFather()) {
+                if (f.getName().equals(c.getFirst().getName())) {
+                    clonedCouple.setFirst(f);
+                    clonedCouple.setWeight(1);
+                }
+            }
+            for (Father f : cloned.getAllFather()) {
+                if (f.getName().equals(c.getSecond().getName())) {
+                    clonedCouple.setSecond(f);
+                    clonedCouple.setWeight(1);
+                }
+            }
+            cloned.getFlux().add(clonedCouple);
+        }
+
+        return  cloned;
+    }
+
     public Petri clone(Petri petri) {
         Petri cloned = new Petri();
 

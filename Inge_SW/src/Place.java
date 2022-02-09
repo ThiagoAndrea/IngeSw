@@ -34,7 +34,7 @@ public class Place extends Father implements Serializable {
         this.name = name;
     }
 
-    @XmlAttribute(name = "Token", required = true)
+    @XmlAttribute(name = "Token")
     @Override
     public int getToken() {
         return token;

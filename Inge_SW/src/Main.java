@@ -4,11 +4,11 @@ import javax.xml.bind.JAXBException;
 
 public class Main {
     public static void main(String[] args) throws JAXBException, SAXException {
-
+        final String xmlNet = "Savings.xml";
 
         MarshallAndUnmarshall util = new MarshallAndUnmarshall();
         Net net = new Net();
-        Global global = util.unmarshallReturn();
+        Global global = util.unmarshallReturn(xmlNet);
         global.sameObject();
 
         int confOrUser = Utility.readInt01(Utility.CONFIGURATOR_OR_USER);
